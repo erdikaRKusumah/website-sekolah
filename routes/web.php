@@ -42,4 +42,4 @@ Route::get('/fasilitas', function () {
 });
 
 //halaman single post
-Route::get('/{slug}', [PostController::class, 'show']);
+Route::get('/{post:slug}', [PostController::class, 'show']);
