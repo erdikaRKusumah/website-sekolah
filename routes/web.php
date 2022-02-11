@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -15,31 +16,62 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', function() {
+    return view('home', [
+        "title" => "Home"
+    ]);
+});
 
-Route::get('/galeri', function () {
+Route::get('/galeri', function() {
     return view('galeri', [
         "title" => "Galeri"
     ]);
 });
 
-Route::get('/sejarah', function () {
+Route::get('/test', function() {
+    return view('test', [
+        "title" => "Fasilitas"
+    ]);
+});
+
+Route::get('/sejarah', function() {
     return view('sejarah', [
         "title" => "Sejarah Singkat"
     ]);
 });
 
-Route::get('/visimisi', function () {
+Route::get('/visimisi', function() {
     return view('visimisi', [
         "title" => "Visi & Misi"
     ]);
 });
 
-Route::get('/fasilitas', function () {
+Route::get('/fasilitas', function() {
     return view('fasilitas', [
         "title" => "Fasilitas"
     ]);
 });
 
 //halaman single post
+Route::get('/categories', function() {
+        return view('categories', [
+        'title' => 'Post Category',
+        'categories' => Category::all()
+    ]);
+});
+
+Route::get('/posts', [PostController::class, 'index']);
+
 Route::get('/{post:slug}', [PostController::class, 'show']);
+
+
+Route::get('/categories/{category:slug}', function(Category $category) {
+    return view('category', [
+        'title' => $category->name,
+        'posts' => $category->posts,
+        'category' => $category->name
+    ]);
+});
+
+
+

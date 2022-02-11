@@ -46,6 +46,10 @@
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                   </ul>
                 </li>
+
+                <li class="nav-item mx-2">
+                  <a class="nav-link {{ ($title === "Posts") ? 'active' : ''}}" aria-current="page" href="/posts">Posts</a>
+                </li>
               </ul>
             
           </div>
