@@ -5,14 +5,16 @@
     <div class="container">
         <article class="mb-5">
         <h2>
-            <a href="/{{ $post->slug }}">{{ $post->title }}</a>
+            <a href="/post/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a>
         </h2>
-        <h5>By: {{ $post->author }} </h5>
+        <p>By <a href="#" class="text-decoration-none">{{ $post->user->name }}</a> in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a> 
+        </p>
         <p>{{ $post->excerpt }}</p>
+
+        <a href="/post/{{ $post->slug }}" class="text-decoration-none">Read more..</a>
         </article>
 
     </div>
     @endforeach
-    <a href="/categories">categories</a>
 
 @endsection
