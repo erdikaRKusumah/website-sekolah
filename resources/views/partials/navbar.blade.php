@@ -17,9 +17,9 @@
                     Profil
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="/sejarah">Sejarah Singkat</a></li>
-                    <li><a class="dropdown-item" href="/visimisi">Visi dan Misi</a></li>
-                    <li><a class="dropdown-item" href="/fasilitas">Fasilitas</a></li>
+                    <li><a class="dropdown-item" href="#">Sejarah Singkat</a></li>
+                    <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
+                    <li><a class="dropdown-item" href="#">Fasilitas</a></li>
                   </ul>
                 </li>
                 <li class="nav-item dropdown mx-2">
@@ -33,7 +33,7 @@
                 </li>
       
                 <li class="nav-item mx-2">
-                  <a class="nav-link {{ ($title === "Galeri") ? 'active' : ''}}" aria-current="page" href="/galeri">Galeri</a>
+                  <a class="nav-link {{ ($title === "Galeri") ? 'active' : ''}}" aria-current="page" href="#">Galeri</a>
                 </li>
       
                 <li class="nav-item dropdown mx-2">
