@@ -10,7 +10,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav navbar-menu">
                 <li class="nav-item mx-2">
-                  <a class="nav-link {{ ($title === "Home") ? 'active' : ''}}" aria-current="page" href="/">Beranda</a>
+                  <a class="nav-link {{ ($active === "Home") ? 'active' : ''}}" aria-current="page" href="/">Beranda</a>
                 </li>
                 <li class="nav-item dropdown mx-2">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,7 +33,7 @@
                 </li>
       
                 <li class="nav-item mx-2">
-                  <a class="nav-link {{ ($title === "Galeri") ? 'active' : ''}}" aria-current="page" href="#">Galeri</a>
+                  <a class="nav-link {{ ($active === "Galeri") ? 'active' : ''}}" aria-current="page" href="#">Galeri</a>
                 </li>
       
                 <li class="nav-item dropdown mx-2">
@@ -48,11 +48,11 @@
                 </li>
 
                 <li class="nav-item mx-2">
-                  <a class="nav-link {{ ($title === "posts") ? 'active' : ''}}" aria-current="page" href="/posts">Posts</a>
+                  <a class="nav-link {{ ($active === "posts") ? 'active' : ''}}" aria-current="page" href="/posts">Posts</a>
                 </li>
 
                 <li class="nav-item mx-2">
-                  <a class="nav-link {{ ($title === "categories") ? 'active' : ''}}" aria-current="page" href="/categories">categories</a>
+                  <a class="nav-link {{ ($active === "categories") ? 'active' : ''}}" aria-current="page" href="/categories">categories</a>
                 </li>
               </ul>
             
