@@ -48,7 +48,11 @@
                 </li>
 
                 <li class="nav-item mx-2">
-                  <a class="nav-link {{ ($title === "Posts") ? 'active' : ''}}" aria-current="page" href="/posts">Posts</a>
+                  <a class="nav-link {{ ($title === "posts") ? 'active' : ''}}" aria-current="page" href="/posts">Posts</a>
+                </li>
+
+                <li class="nav-item mx-2">
+                  <a class="nav-link {{ ($title === "categories") ? 'active' : ''}}" aria-current="page" href="/categories">categories</a>
                 </li>
               </ul>
             
