@@ -3,10 +3,19 @@
 @section('container')
 <div class="row justify-content-center">
     <div class="col-md-3">
+
         <main class="form-signin">
             <form>
                 <img class="mb-4 py-2 mx-auto d-block" src="/assets/logo.png" alt="" width="80">
                 <h1 class="h3 mb-3 fw-normal text-center">Please Login</h1>
+
+                @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <div class="form-floating">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
