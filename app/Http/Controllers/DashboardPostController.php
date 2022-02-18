@@ -47,8 +47,13 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
+            'image' => 'image|file|max:1024',
             'body' => 'required'
         ]);
+
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
 
         $post = Post::create([
             'user_id' => auth()->user()->id,
@@ -56,6 +61,7 @@ class DashboardPostController extends Controller
             'title' => $request->title,
             'slug' => $request->slug,
             'category_id' => $request->category_id,
+            'image' => $request->file('image')->store('post-images'),
             'body' => $request->body
         ]);
         
