@@ -123,7 +123,7 @@
             </div>
         </div>
         <div class="row">
-          @foreach($posts as $post)
+            @foreach($posts as $post)
             <div class="col">
                 <div class="card">
                     <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top" alt="...">
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-          @endforeach
+            @endforeach
             
         </div>
     </div>

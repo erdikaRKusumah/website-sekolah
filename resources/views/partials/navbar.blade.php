@@ -10,7 +10,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav navbar-menu">
                 <li class="nav-item mx-2">
-                  <a class="nav-link {{ ($active === "Home") ? 'active' : ''}}" aria-current="page" href="/">Beranda</a>
+                  <a class="nav-link {{ ($active === "home") ? 'active' : ''}}" aria-current="page" href="/">Beranda</a>
                 </li>
                 <li class="nav-item dropdown mx-2">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,7 +76,7 @@
                   
                   @else
                   <li class="nav-item">
-                    <a href="/login" class="nav-link" {{ ($active === "login") ? 'active' : ''}}><i class="bi bi-box-arrow-right"></i> Login</a>
+                    <a href="/login" class="nav-link {{ ($active === "login") ? 'active' : ''}}"><i class="bi bi-box-arrow-right"></i> Login</a>
                   </li>
                   @endauth
                 </ul>

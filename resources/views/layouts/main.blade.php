@@ -13,6 +13,9 @@
     <!-- bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
+    {{-- logo title --}}
+    <link rel="icon" href="/assets/favicon-16x16.png" type="image/x-icon">
+
     <title>SMPN 1 Cilamaya Wetan | {{ $title }}</title>
   </head>
   <body>

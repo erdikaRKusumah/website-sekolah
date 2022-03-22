@@ -25,7 +25,7 @@ class HomeController extends Controller
         return view('home', [
             "title" => "All Posts" . $title,
             // "posts" => Post::all()
-            "active" => "posts",
+            "active" => "home",
             "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(3)->withQueryString()
         ]);
     }
