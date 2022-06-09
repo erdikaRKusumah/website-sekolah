@@ -8,6 +8,13 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardCategoryController;
+use App\Http\Controllers\DashboardGalleryController;
+use App\Http\Controllers\DashboardStaffController;
+use App\Http\Controllers\DashboardVisionController;
+use App\Http\Controllers\DashboardVisiMisiController;
+use App\Http\Controllers\DashboardSambutanController;
+use App\Http\Controllers\DashboardSejarahSingkatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +36,13 @@ use App\Http\Controllers\DashboardPostController;
 
 Route::get('/', [HomeController::class, 'index']);
 
+Route::get('/coba', function() {
+    return view('coba', [
+        "title" => "Home",
+        "active" => "Home"
+    ]);
+});
+
 
 
 Route::get('/categories', function() {
@@ -38,6 +52,8 @@ Route::get('/categories', function() {
         'categories' => Category::all()
     ]);
 });
+
+
 
 Route::get('/posts', [PostController::class, 'index']);
 
@@ -57,6 +73,27 @@ Route::get('/dashboard', function() {
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+Route::resource('/dashboard/categories', DashboardCategoryController::class)->scoped(['category' => 'slug'])->middleware('auth');
+// Route::get('/dashboard/categories/edit/{category:slug}', [DashboardCategoryController::class, 'edit']);
+// Route::get('/dashboard/categories', [DashboardCategoryController::class, 'index']);
+
+Route::resource('/dashboard/galleries', DashboardGalleryController::class)->middleware('auth');
+
+Route::resource('/dashboard/staffs', DashboardStaffController::class)->middleware('auth');
+
+Route::resource('/dashboard/visions', DashboardVisionController::class)->middleware('auth');
+
+Route::resource('/dashboard/visiMisi', DashboardVisiMisiController::class)->middleware('auth');
+
+Route::resource('/dashboard/sambutan', DashboardSambutanController::class)->middleware('auth');
+
+Route::get('/dashboard/sejarahSingkat/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
+Route::resource('/dashboard/sejarahSingkat', DashboardSejarahSingkatController::class)->middleware('auth');
+
+
+
 
 
 // Route::get('/categories/{category:slug}', function(Category $category) {

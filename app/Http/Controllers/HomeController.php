@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Sambutan;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,8 @@ class HomeController extends Controller
             "title" => "All Posts" . $title,
             // "posts" => Post::all()
             "active" => "home",
-            "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(3)->withQueryString()
+            "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(3)->withQueryString(),
+            "sambutan" => Sambutan::all()
         ]);
     }
 

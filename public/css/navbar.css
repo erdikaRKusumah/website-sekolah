@@ -1,3 +1,197 @@
-.navbar-menu {
-    padding-left: 100px;
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
+nav {
+    background: white;
+}
+nav:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+nav .logo {
+    float: left;
+    color: #4fa7ff;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 70px;
+    margin-left: 50px;
+    padding-left: 60px;
+}
+nav ul {
+    float: right;
+    margin-right: 400px;
+    list-style: none;
+    position: relative;
+}
+nav ul li {
+    float: left;
+    z-index: 10;
+    display: inline-block;
+    background: white;
+    margin: 0 5px;
+}
+nav ul li a {
+    line-height: 70px;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px 15px;
+}
+.bx-chevron-down {
+    font-size: 17px;
+}
+nav ul li a:hover {
+    color: #4fa7ff;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 0 5px #4fa7ff, 0 0 8px #4fa7ff;
+}
+nav ul ul li a:hover {
+    box-shadow: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+nav ul ul {
+    position: absolute;
+    top: 90px;
+    border-top: 3px solid #4fa7ff;
+    opacity: 0;
+    visibility: hidden;
+    transition: top 0.3s;
+}
+nav ul ul ul {
+    border-top: none;
+}
+nav ul li:hover > ul {
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+}
+nav ul ul li {
+    position: relative;
+    margin: 0px;
+    right: 15px;
+    width: 180px;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+nav ul ul li:last-child {
+    border-bottom: none;
+}
+nav ul ul li a {
+    line-height: 50px;
+}
+nav ul ul ul li {
+    position: relative;
+    top: -60px;
+    left: 150px;
+}
+.show,
+.icon,
+input {
+    display: none;
+}
+.fa-plus {
+    font-size: 15px;
+    margin-left: 40px;
+}
+
+@media all and (max-width: 1500px) {
+    nav ul {
+        float: right;
+        margin-right: 100px;
+        list-style: none;
+        position: relative;
+    }
+}
+@media all and (max-width: 1100px) {
+    nav ul {
+        margin-right: 0px;
+        float: left;
+    }
+    nav .logo {
+        padding-left: 30px;
+        width: 100%;
+    }
+    .show + a,
+    ul {
+        display: none;
+    }
+    nav ul li,
+    nav ul ul li {
+        display: block;
+        width: 100%;
+    }
+    nav ul li a:hover {
+        box-shadow: none;
+    }
+    .show {
+        display: block;
+        font-size: 15px;
+        padding: 0 20px;
+        line-height: 70px;
+        cursor: pointer;
+    }
+    .show:hover {
+        color: #4fa7ff;
+    }
+    .icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 40px;
+        line-height: 70px;
+        cursor: pointer;
+        font-size: 25px;
+    }
+    nav ul ul {
+        top: 70px;
+        border-top: 0px;
+        float: none;
+        position: static;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+    }
+    nav ul ul a {
+        padding-left: 40px;
+    }
+    nav ul ul ul a {
+        padding-left: 80px;
+    }
+    nav ul ul ul li {
+        position: static;
+    }
+    [id^="btn"]:checked + ul {
+        display: block;
+    }
+    nav ul ul li {
+        border-bottom: 0px;
+    }
+    /* span.cancel:before {
+        content: "\f00d";
+    } */
+}
+/* .content {
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+} */
+/* header {
+    font-size: 35px;
+    font-weight: 600;
+    padding: 10px 0;
+} */
+/* p {
+    font-size: 30px;
+    font-weight: 500;
+} */

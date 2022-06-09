@@ -44,7 +44,7 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
@@ -56,15 +56,21 @@ class DashboardPostController extends Controller
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
 
-        $post = Post::create([
-            'user_id' => auth()->user()->id,
-            'excerpt' => Str::limit(strip_tags($request->body), 200),
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'category_id' => $request->category_id,
-            'image' => $request->file('image')->store('post-images'),
-            'body' => $request->body
-        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->sambutan), 200);
+
+        Post::create($validatedData);
+
+
+        // $post = Post::create([
+        //     'user_id' => auth()->user()->id,
+        //     'excerpt' => Str::limit(strip_tags($request->body), 200),
+        //     'title' => $request->title,
+        //     'slug' => $request->slug,
+        //     'category_id' => $request->category_id,
+        //     'image' => $request->file('image')->store('post-images'),
+        //     'body' => $request->body
+        // ]);
         
         return redirect('/dashboard/posts')->with('success', 'New post has been added!');
     }
@@ -93,7 +99,7 @@ class DashboardPostController extends Controller
     {
         return view('dashboard.posts.edit', [
             'post' => $post,
-            'categories' => Category::all()
+            'categories' => Category::all(),
         ]);
     }
 
@@ -118,7 +124,7 @@ class DashboardPostController extends Controller
             $rules['slug'] = 'required|unique:posts'; 
         }
         
-        $validateData = $request->validate($rules);
+        $validatedData = $request->validate($rules);
         
         if($request->file('image')) {
             if($request->oldImage) {
@@ -127,16 +133,22 @@ class DashboardPostController extends Controller
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
 
-        $post = Post::where('id', $post->id)
-                    ->update([
-                        'user_id' => auth()->user()->id,
-                        'excerpt' => Str::limit(strip_tags($request->body), 200),
-                        'title' => $request->title,
-                        'slug' => $request->slug,
-                        'category_id' => $request->category_id,
-                        'image' => $request->file('image')->store('post-images'),
-                        'body' => $request->body
-                    ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+
+        Post::where('id', $post->id)
+        ->update($validatedData);
+
+        // $post = Post::where('id', $post->id)
+        //             ->update([
+        //                 'user_id' => auth()->user()->id,
+        //                 'excerpt' => Str::limit(strip_tags($request->body), 200),
+        //                 'title' => $request->title,
+        //                 'slug' => $request->slug,
+        //                 'category_id' => $request->category_id,
+        //                 'image' => $request->file('image')->store('post-images'),
+        //                 'body' => $request->body
+        //             ]);
 
         return redirect('/dashboard/posts')->with('success', 'Post has been updated!');
 

@@ -1,48 +1,70 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
+    <section>
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Berita Sekolah</h1>
+          </div>
+          <div class="col-sm-6">
+            {{-- <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Berita</li>
+            </ol> --}}
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">My Posts</h1>
-</div>
-
-@if(session()->has('success'))
-    <div class="alert alert-success col-lg-8" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
-
-<div class="table-responsive col-lg-12">
-    <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create new post</a>
-    <table class="table table-striped table-sm">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-
-            @foreach ($posts as $post)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $post->title }}</td>
-                    <td>{{ $post->category->name }}</td>
-                    <td>
-                        <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span data-feather="eye"></span></a>
-                        <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                        <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
-                            @method('delete')
-                            @csrf
-                            <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <a href="/dashboard/posts/create" class="btn btn-primary"><span data-feather="plus"></span> Tambah Berita</a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($posts as $post)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $post->title }}</td>
+                        <td>{{ $post->category->name }}</td>
+                        <td class="text-center">
+                            <a href="/dashboard/posts/{{ $post->slug }}" class="btn btn-primary btn-sm"><i class="fas fa-eye fa-fw"></i></a>
+                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit fa-fw"></i></a>
+                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="fas fa-trash fa-fw"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </section>
+      <!-- /.container-fluid -->
 @endsection
