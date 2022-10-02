@@ -10,11 +10,11 @@ use App\Models\Sambutan;
 
 class HomeController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $title = '';
         if(request('category')) {
-        $category = Category::firstWhere('slug', request('category')); 
+        $category = Category::firstWhere('slug', request('category'));
         $title = ' in ' . $category->name;
         }
 
@@ -27,7 +27,7 @@ class HomeController extends Controller
             "title" => "All Posts" . $title,
             // "posts" => Post::all()
             "active" => "home",
-            "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(3)->withQueryString(),
+            "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(4)->withQueryString(),
             "sambutan" => Sambutan::all()
         ]);
     }

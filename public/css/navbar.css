@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap"); */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", sans-serif; */
 }
 nav {
     background: white;
@@ -17,10 +17,6 @@ nav .logo {
     float: left;
     color: #4fa7ff;
     font-size: 27px;
-    font-weight: 600;
-    line-height: 70px;
-    margin-left: 50px;
-    padding-left: 60px;
 }
 nav ul {
     float: right;
@@ -101,8 +97,13 @@ input {
     font-size: 15px;
     margin-left: 40px;
 }
+.kotak {
+    float: left;
+    width: 350px;
+    height: 20px;
+}
 
-@media all and (max-width: 1500px) {
+@media all and (max-width: 1200px) {
     nav ul {
         float: right;
         margin-right: 100px;
@@ -110,7 +111,10 @@ input {
         position: relative;
     }
 }
-@media all and (max-width: 1100px) {
+@media all and (max-width: 991px) {
+    .kotak {
+        display: none;
+    }
     nav ul {
         margin-right: 0px;
         float: left;

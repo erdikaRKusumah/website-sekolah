@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('container')
-{{-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    {{-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -87,7 +87,68 @@
 
     </div> --}}
     {{-- imageSlider --}}
-    <div id="slides" class="carousel slide" data-ride="carousel">
+    <section>
+        <div class="slider_img layout_two">
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img class="d-block" src="{{ asset('assets') }}/slider1.png" alt="First slide">
+                        <div class="carousel-caption d-md-block">
+                            <div class="slider_title">
+                                <h1>Bepikir Kreaftif &amp; Inovatif</h1>
+                                <h4>Bagi kami kreativitas merupakan gerbang masa depan.<br> kreativitas akan mendorong
+                                    inovasi. <br> Itulah yang kami lakukan.</h4>
+                                <div class="slider-btn">
+                                    <a href="" class="btn btn-default">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block" src="{{ asset('assets') }}/slider2.png" alt="Second slide">
+                        <div class="carousel-caption d-md-block">
+                            <div class="slider_title">
+                                <h1>Guru Bekualitas Tinggi</h1>
+                                <h4>Guru merupakan faktor penting dalam proses belajar-mengajar.<br> Itulah kenapa kami
+                                    mendatangkan guru-guru <br>terbaik dari berbagai penjuru.</h4>
+                                <div class="slider-btn">
+                                    <a href="" class="btn btn-default">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block" src="{{ asset('assets') }}/slider3.png" alt="Third slide">
+                        <div class="carousel-caption d-md-block">
+                            <div class="slider_title">
+                                <h1>Proses Belajar Interatif</h1>
+                                <h4>Kami membuat proses belajar mengajar menjadi lebih interatif.<br> dengan demikian siswa
+                                    lebih menyukai <br>proses belajar.</h4>
+                                <div class="slider-btn">
+                                    <a href="" class="btn btn-default">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                    <i class='bx bx-chevron-left fa-slider' aria-hidden="true"></i>
+
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                    <i class='bx bx-chevron-right fa-slider' aria-hidden="true"></i>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    {{-- <div id="slides" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
             <li data-target="#slides" data-slide-to="0" class="active"></li>
             <li data-target="#slides" data-slide-to="1"></li>
@@ -103,14 +164,14 @@
                     <button type="button" class="btn btn-outline-light btn-lg">Selengkapnya</button>
                 </div>
             </div>
-            {{-- <div class="carousel-item">
+            <div class="carousel-item">
                 <img src="/assets/bulding.jpg" class="d-block w-100" alt="...">
-            </div> --}}
+            </div>
         </div>
-    </div>
+    </div> --}}
     {{-- akhir imageSlider --}}
     {{-- jumbotron --}}
-    <div class="container-fluid">
+    {{-- <div class="container-fluid">
         <div class="row jumbotron">
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
                 <p class="lead">A web hosting service allows individuals and organization to make their website accessible via the world wide web.</p>
@@ -120,10 +181,10 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
     {{-- akhir jumbotron --}}
     {{-- two column  --}}
-    <div class="container-fluid padding">
+    {{-- <div class="container-fluid padding">
         <div class="row padding">
             <div class="col-lg-4 offset-lg-2 col-md-5 offset-md-1 text-center kepsek">
                 <img src="/assets/kepsek.png" alt="">
@@ -131,14 +192,35 @@
                 <p>Kepala Sekolah</p>
             </div>
             <div class="col-lg-4 col-md-5">
-                <h2>If you build it...</h2>
-                <p>The columns will automatically stack on the top each other when the screen is less than 576px wide.</p>
-                <p>Resize the browser window to see the effect. Responsive web design has become more important as the amount of mobile traffic now accounts for more than half of total internet traffic</p>
-                <p>It can also display the web page differently depending on the screen size or viewing device.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
+                <h2>Assalamualaikum Wr.Wb</h2>
+                <p>Puji syukur kepada Alloh SWT, Tuhan Yang Maha Esa yang telah memberikan rahmat dan anugerahNya sehingga website SMK Negeri 2 Yogyakarta ini dapat terbit. </p>
+                <p>Salah satu tujuan dari website ini adalah untuk menjawab akan setiap kebutuhan informasi dengan memanfaatkan sarana teknologi informasi yang ada. Kami sadar sepenuhnya dalam rangka memajukan pendidikan di era berkembangnya Teknologi Informasi yang begitu pesat, sangat diperlukan berbagai sarana prasarana yang kondusif, kebutuhan berbagai informasi siswa, guru, orangtua maupun masyarakat, sehingga kami berusaha mewujudkan hal tersebut semaksimal mungkin.</p>
+                <p>Semoga dengan adanya website ini dapat membantu dan bermanfaat, terutama informasi yang berhubungan dengan pendidikan, ilmu pengetahuan dan informasi seputar SMPN 1 Cilamaya Wetan.</p>
+                <a href="#" class="btn btn-primary">Selengkapnya..</a>
             </div>
         </div>
-    </div>
+    </div> --}}
+    <section class="clearfix about about-style2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="mt-5">Selamat Datang</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ asset('assets') }}/kepsek.png" class="img-fluid about-img" alt="#">
+                </div>
+                <div class="col-md-8">
+                    <h2>SAMBUTAN SINGKAT</h2>
+                    <p>Kami Menyambut baik terbitnya Website Sekolah yang baru , dengan harapan dipublikasinya website ini
+                        sekolah berharap : Peningkatan layanan pendidikan kepada siswa, orangtua, dan masyarakat pada
+                        umumnya semakin meningkat. </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
     {{-- end tc  --}}
     {{-- welcome section --}}
     {{-- <div class="container-fluid padding">
@@ -158,120 +240,161 @@
     </div> --}}
     {{-- end ws --}}
     {{-- three column sectio --}}
-    <div class="container-fluid padding">
-        <div class="row text-center padding shadow-sm m-5">
-            <div class="col-lg-4 offset-lg-2 col-md-5 offset-md-1">
-                <i class='bx bxs-book-reader'></i>
-                <i class="fa-solid fa-book-open-reader"></i>
-                <h3>VISI</h3>
-                <p>Built with the latest version of HTML, HTML 5</p>
+    <section class="vision">
+        <div class="container-md">
+            <div class="row text-center padding shadow m-5">
+                <div class="col-lg-4 offset-lg-2 col-md-5 offset-md-1">
+                    <div class="col visi">
+                        <i class='bx bxs-book-reader'></i>
+                        {{-- <i class="fa-solid fa-book-open-reader"></i> --}}
+                        <h3>VISI</h3>
+                    </div>
+                    {{-- <img src="{{ asset('assets')}}/br.png" alt=""> --}}
+                    <p>Terwujudnya peserta didik yang beriman, cerdas,
+                        terampil, bertaqwa, mandiri, dan berwawasan global.</p>
+                </div>
+                <div class="col-lg-4 col-md-5">
+                    <div class="col visi">
+                        <i class='bx bxs-book-reader'></i>
+                        <h3>MISI</h3>
+                    </div>
+                    {{-- <img src="{{ asset('assets')}}/br.png" alt=""> --}}
+                    <p>Menumbuh kembangkan penghayatan, melaksanakan
+                        pembelajaran dan bimbingan secara efektif, mendorong
+                        dan membantu siswa, melaksanakan pembinaan
+                        keterampilan secara efetif, menerapkan manajemen partisipasi </p>
+                    <a href="#" class="btn btn-default">Selengkapnya..</a>
+                </div>
+                {{-- <div class="col-xs-12 col-md-4">
+                    <i class="fab fa-css3"></i>
+                    <h3>BOOTSTRAP</h3>
+                    <p>Built with the latest version of CSS, CSS 3</p>
+                </div> --}}
             </div>
-            <div class="col-lg-4 col-md-5">
-                <i class='bx bxs-book-reader'></i>
-                <h3>MISI</h3>
-                <p>Built with the latest version of Bootstrap, Bootstrap 5</p>
-            </div>
-            {{-- <div class="col-xs-12 col-md-4">
-                <i class="fab fa-css3"></i>
-                <h3>BOOTSTRAP</h3>
-                <p>Built with the latest version of CSS, CSS 3</p>
-            </div> --}}
         </div>
-    </div>
-    {{-- end tcs --}}
-    <hr class="my-4">
-    {{-- fix background --}}
-    <figure>
-        <div class="fixed-wrap">
-            <div id="fixed">
+
+    </section>
+
+    <section class="history">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="mt-5">Sejarah Singkat</h2>
+                    <p>SMPN 1 Cilamaya Wetan</p>
+                    <p>Kami Menyambut baik terbitnya Website MSCHOOL yang baru , dengan harapan dipublikasinya website ini
+                        sekolah berharap : Peningkatan layanan pendidikan kepada siswa, orangtua, dan masyarakat pada
+                        umumnya semakin meningkat. </p>
+                    <p>
+                        It is nigh impossible to capture the spirit of Trinity on the pages of a website. Glowing words on a
+                        digital screen, photographs of smiling, engaged boys – they are what you’d expect from a website of
+                        a school like ours.
+                    </p>
+                    <p>
+                        You can expect all that, and more. However, what you might find unexpected is my unwillingness to
+                        measure the success of our School by the success of our young men.
+                    </p>
+                    <a href="#" class="btn btn-history mb-5">Selengkapnya..</a>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="kotakk">
+
+                    </div>
+                    <img src="{{ asset('assets') }}/sekolah.jpg" class="img-fluid about-img text-center" alt="#">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="galery" id="galery">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="mt-5">Galeri</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                @foreach ($posts as $post)
+                    {{-- <div class="galery"> --}}
+                    {{-- <div> --}}
+                    @if ($post->image)
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                            class="img-fluid col-lg-4 mb-5">
+                    @else
+                        <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}"
+                            class="card-img-top col-lg-4 mb-5" alt="{{ $post->category->name }}">
+                    @endif
+                    {{-- </div> --}}
+                    {{-- </div> --}}
+                @endforeach
 
             </div>
         </div>
-    </figure>
-    {{-- end  --}}
-    {{-- emoji section  --}}
-    <button class="fun" data-toggle="collapse" data-target="#emoji">Click For Fun</button>
-    <div id="emoji" class="collapse">
-        <div class="container-fluid padding">
-            <div class="row text-center">
-                <div class="col-sm-6 col-md-3">
-                    <img class="gif" src="/assets/gif/panda.gif">
+
+    </section>
+
+    <section class="our_courses" style="background: #f2f2f2;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="mt-5">Berita Terbaru</h2>
                 </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="gif" src="/assets/gif/poo.gif">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="gif" src="/assets/gif/unicorn.gif">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img class="gif" src="/assets/gif/chicken.gif">
+            </div>
+            <div class="row">
+                @foreach ($posts as $post)
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                        <div class="courses_box mb-4">
+                            <div class="course-img-wrap">
+                                @if ($post->image)
+                                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                                        class="img-fluid">
+                                @else
+                                    <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}"
+                                        class="card-img-top" alt="{{ $post->category->name }}">
+                                @endif
+                            </div>
+                            <!-- // end .course-img-wrap -->
+                            <a href="" class="course-box-content">
+                                <h3 style="text-align:center;">{{ $post->title }}</h3>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div> <br>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="" class="btn btn-default btn-courses">View More</a>
                 </div>
             </div>
         </div>
-    </div>
-    {{-- end  --}}
-    {{-- meet the team --}}
-    <div class="container-fluid padding">
-        <div class="row welcome text-center">
-            <div class="col-12">
-                <h1 class="display-4">Meet The Team</h1>
-            </div>
-            <hr>
-        </div>
-    </div>
-    {{-- end  --}}
-    {{-- card   --}}
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/foto-kepsek.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">John is an Internet enterpreneur with almost 20 years of experience.</p>
-                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/foto-kepsek.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">John is an Internet enterpreneur with almost 20 years of experience.</p>
-                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="/assets/foto-kepsek.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">John is an Internet enterpreneur with almost 20 years of experience.</p>
-                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
     {{-- end  --}}
     {{-- two column  --}}
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-md-6">
-                <h2>If you build it...</h2>
-                <p>The columns will automatically stack on the top each other when the screen is less than 576px wide.</p>
-                <p>Resize the browser window to see the effect. Responsive web design has become more important as the amount of mobile traffic now accounts for more than half of total internet traffic</p>
-                <p>It can also display the web page differently depending on the screen size or viewing device.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-            <div class="col-lg-6">
-                {{-- <img src="/assets/foto-kepsek.jpg" alt=""> --}}
+    <section class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="mt-5">TENTANG SEKOLAH</h2>
+                    <p>The columns will automatically stack on the top each other when the screen is less than 576px wide.
+                    </p>
+                    <p>Resize the browser window to see the effect. Responsive web design has become more important as the
+                        amount of mobile traffic now accounts for more than half of total internet traffic</p>
+                    <p>It can also display the web page differently depending on the screen size or viewing device.</p>
+                    <a href="#" class="btn btn-default">Selengkapnya..</a>
+                    <a href="#" class="btn btn-history">Selengkapnya..</a>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="kotakk">
+
+                    </div>
+                    <img src="{{ asset('assets') }}/sekolah.jpg" class="img-fluid about-img" alt="#">
+                </div>
             </div>
         </div>
-        <hr class="my-4">
-    </div>
+    </section>
     {{-- end tc  --}}
     {{-- social media --}}
     <div class="container-fluid padding">
@@ -290,36 +413,34 @@
     </div>
     {{-- end social media --}}
     {{-- footer  --}}
-    <footer>
+    <footer class="footer">
         <div class="container-fluid padding">
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <img src="/assets/logo.png">
+            <div class="row">
+                <div class="col-lg-4 offset-lg-1">
+                    <img src="/assets/logo.png" style="width: 150px; float:left;">
+                    <h3 style="font-weight: bold;">SMPN 1 Cilamaya Wetan</h3>
+                    <p style="font-weight: bold;">Akreditas A</p>
+                    <p>Karawang</p>
                     <hr class="light">
-                    <p>555-555-555</p>
-                    <p>erdika@gmail.com</p>
-                    <p>100 Street Name</p>
-                    <p>City, State, 00000</p>
+                    <p>SMPN 1 Cilamaya Wetan adalah Sekolah Menengah Pertama (SMP) Negeri yang berlokasi di Propinsi
+                        Jawa
+                        Barat Kabupaten Kab. Kerawang dengan alamat Jl. Raya Cilamaya Cilamaya Wetan-karawang.</p>
+                    <h3 style="font-weight: bold;">KONTAK KAMI</h3>
+                    <i class='bx bx-phone'></i>
+                    <p>02632330006</p>
+                    <i class='bx bx-envelope'></i>
+                    <p>smpn1cilamayawetan@gmail.com</p>
                 </div>
-                <div class="col-md-4">
-                    <hr class="light">
-                    <h5>Our Hours</h5>
-                    <hr class="light">
-                    <p>Monday: 9pm - 5pm</p>
-                    <p>Saturday: 10am - 4pm</p>
-                    <p>Sunday: closed</p>
+                <div class="col-lg-3">
                 </div>
-                <div class="col-md-4">
-                    <hr class="light">
-                    <h5>Our Hours</h5>
-                    <hr class="light">
-                    <p>City, State, 00000</p>
-                    <p>City, State, 00000</p>
-                    <p>City, State, 00000</p>
-                </div>
-                <div class="col-12">
-                    <hr class="light">
-                    <h5>&copy; smpn1cilamayawetan.com</h5>
+                <div class="col-lg-4 col-md-12 text-center">
+                    {{-- <div class="kotakk">
+
+                    </div> --}}
+                    <p><iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.083584668928!2d107.5778920147692!3d-6.252717395474091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e696674a821a355%3A0x77df6e9c146e3150!2sSMP%20Negeri%201%20Cilamaya%20Wetan!5e0!3m2!1sid!2sid!4v1664648745770!5m2!1sid!2sid"
+                            width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe></p>
                 </div>
             </div>
         </div>
@@ -331,10 +452,10 @@
         <div class="row my-5">
             <div class="col">
                 <img src="/assets/kepsek.png" class="d-block width-100" alt="Product Image">
-                
+
             </div>
             <div class="col">
-            @foreach($sambutan as $smbtn)
+            @foreach ($sambutan as $smbtn)
                 <h4>Selamat Datang</h4>
                 <H2>Sambutan Kepala Sekolah</H2>
                 <p>{!! $smbtn->sambutan !!}</p>
@@ -345,7 +466,7 @@
     </div>
     <!-- Akhir Sambutan -->
     <!-- Awal Pengumuman -->
-    
+
     <div class="pengumuman container">
         <div class="row my-5">
             <div class="col-10">
@@ -356,7 +477,7 @@
             </div>
         </div>
         <div class="row">
-            @foreach($posts as $post)
+            @foreach ($posts as $post)
             <div class="col">
                 <div class="card">
                     <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top" alt="...">
@@ -367,7 +488,7 @@
                 </div>
             </div>
             @endforeach
-            
+
         </div>
     </div>
     <!-- Akhir Pengumuman -->
@@ -537,4 +658,3 @@
         </div>
     </div> --}}
 @endsection
-

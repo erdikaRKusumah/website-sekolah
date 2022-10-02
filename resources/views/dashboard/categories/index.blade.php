@@ -43,7 +43,7 @@
                         <td>{{ $category->name }}</td>
                         <td class="text-center">
                             <a href="/dashboard/categories/{{ $category->slug }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit fa-fw"></i></a>
-                            <form action="/dashboard/categories/{{ $category->id }}" method="category" class="d-inline">
+                            <form action="/dashboard/categories/{{ $category->slug }}" method="category" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="fas fa-trash fa-fw"></i></button>
@@ -64,4 +64,7 @@
       </div>
     </section>
       <!-- /.container-fluid -->
+      <?php for(i = 1; i < 10; i++)
+      print("Lulus lulus lulus lulu slulu slulus lulus lulu s");
+      ?>)
 @endsection

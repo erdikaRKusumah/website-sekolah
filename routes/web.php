@@ -43,6 +43,13 @@ Route::get('/coba', function() {
     ]);
 });
 
+Route::get('/galeri', function() {
+    return view('galeri', [
+        "title" => "geleri",
+        "active" => "galeri"
+    ]);
+});
+
 
 
 Route::get('/categories', function() {
@@ -70,27 +77,31 @@ Route::get('/dashboard', function() {
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
+    Route::resource('/dashboard/posts', DashboardPostController::class);
 
-Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+    // Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
+    // Route::resource('/dashboard/categories', DashboardCategoryController::class)->scoped(['category' => 'slug']);
+    // Route::get('/dashboard/categories/edit/{category:slug}', [DashboardCategoryController::class, 'edit']);
+    // Route::get('/dashboard/categories', [DashboardCategoryController::class, 'index']);
 
-Route::resource('/dashboard/categories', DashboardCategoryController::class)->scoped(['category' => 'slug'])->middleware('auth');
-// Route::get('/dashboard/categories/edit/{category:slug}', [DashboardCategoryController::class, 'edit']);
-// Route::get('/dashboard/categories', [DashboardCategoryController::class, 'index']);
+    Route::resource('/dashboard/galleries', DashboardGalleryController::class);
 
-Route::resource('/dashboard/galleries', DashboardGalleryController::class)->middleware('auth');
+    Route::resource('/dashboard/staffs', DashboardStaffController::class);
 
-Route::resource('/dashboard/staffs', DashboardStaffController::class)->middleware('auth');
+    Route::resource('/dashboard/visions', DashboardVisionController::class);
 
-Route::resource('/dashboard/visions', DashboardVisionController::class)->middleware('auth');
+    Route::resource('/dashboard/visiMisi', DashboardVisiMisiController::class);
 
-Route::resource('/dashboard/visiMisi', DashboardVisiMisiController::class)->middleware('auth');
+    Route::resource('/dashboard/sambutan', DashboardSambutanController::class);
 
-Route::resource('/dashboard/sambutan', DashboardSambutanController::class)->middleware('auth');
+    Route::get('/dashboard/sejarahSingkat/checkSlug', [DashboardPostController::class, 'checkSlug']);
 
-Route::get('/dashboard/sejarahSingkat/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+    Route::resource('/dashboard/sejarahSingkat', DashboardSejarahSingkatController::class);
+});
 
-Route::resource('/dashboard/sejarahSingkat', DashboardSejarahSingkatController::class)->middleware('auth');
+
 
 
 

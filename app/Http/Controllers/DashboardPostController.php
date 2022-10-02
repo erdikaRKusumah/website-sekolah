@@ -16,7 +16,7 @@ class DashboardPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category)
     {
         return view('dashboard.posts.index', [
             'posts' => Post::where('user_id', auth()->user()->id)->get()
@@ -71,7 +71,7 @@ class DashboardPostController extends Controller
         //     'image' => $request->file('image')->store('post-images'),
         //     'body' => $request->body
         // ]);
-        
+
         return redirect('/dashboard/posts')->with('success', 'New post has been added!');
     }
 
@@ -99,7 +99,7 @@ class DashboardPostController extends Controller
     {
         return view('dashboard.posts.edit', [
             'post' => $post,
-            'categories' => Category::all(),
+            'categories' => Category::all()
         ]);
     }
 
@@ -119,13 +119,13 @@ class DashboardPostController extends Controller
             'body' => 'required'
         ];
 
-        
+
         if($request->slug != $post->slug) {
-            $rules['slug'] = 'required|unique:posts'; 
+            $rules['slug'] = 'required|unique:posts';
         }
-        
+
         $validatedData = $request->validate($rules);
-        
+
         if($request->file('image')) {
             if($request->oldImage) {
                 Storage::delete($request->oldImage);

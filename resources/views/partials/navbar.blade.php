@@ -46,15 +46,15 @@
                   <li><a class="dropdown-item" href="#">Kelas</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item mx-2">
                 <a class="nav-link {{ ($active === "Galeri") ? 'active' : ''}}" aria-current="page" href="#">Galeri</a>
               </li>
 
               <li class="nav-item mx-2">
                 <a class="nav-link {{ ($active === "Galeri") ? 'active' : ''}}" aria-current="page" href="#">Kontak</a>
-              </li>  
-              
+              </li>
+
               <li class="nav-item mx-2">
                 <a class="nav-link {{ ($active === "posts") ? 'active' : ''}}" aria-current="page" href="/posts">Posts</a>
               </li>
@@ -81,7 +81,7 @@
                       </li>
                     </ul>
                   </li>
-                
+
                 @else
                 <li class="nav-item">
                   <a href="/login" class="nav-link {{ ($active === "login") ? 'active' : ''}}"><i class="bi bi-box-arrow-right"></i> Login</a>
@@ -89,9 +89,9 @@
                 @endauth
               </ul>
 
-          
+
         </div>
-        
+
     </div>
   </div>
 </nav> --}}
@@ -149,39 +149,42 @@
 </nav> --}}
 
 <nav>
-  <div class="logo">
-    <img src="/assets/logoSMP.png" alt="" width="165">
-  </div>
-  <label for="btn" class="icon">
-    <span class="fa fa-bars"></span>
-  </label>
-  <input type="checkbox" id="btn">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li>
-      <label for="btn-1" class="show">Profile +</label>
-      <a href="#">Profile
-        <i class='bx bx-chevron-down'></i>
-      </a>
-      <input type="checkbox" id="btn-1">
-      <ul>
-        <li><a href="#">Visi & Misi</a></li>
-        <li><a href="#">Sejarah Singkat</a></li>
-        <li><a href="#">Struktur Organisasi</a></li>
-        <li><a href="#">Guru dan Staff</a></li>
-        <li><a href="#">Fasilitas</a></li>
-      </ul>
-    </li>
-    <li>
-      <label for="btn-2" class="show">Akademik +</label>
-      <a href="#">Akademik
-        <i class='bx bx-chevron-down'></i>
-      </a>
-      <input type="checkbox" id="btn-2">
-      <ul>
-        <li><a href="#">Kalender Akademik</a></li>
-        <li><a href="#">Mata Pelajaran</a></li>
-        {{-- <li>
+    <div class="kotak">
+
+    </div>
+    <div class="logo">
+        <img src="/assets/logoSMP.png" alt="" width="165">
+    </div>
+    <label for="btn" class="icon">
+        <span class="fa fa-bars"></span>
+    </label>
+    <input type="checkbox" id="btn">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li>
+            <label for="btn-1" class="show">Profile +</label>
+            <a href="#">Profile
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <input type="checkbox" id="btn-1">
+            <ul>
+                <li><a href="#">Visi & Misi</a></li>
+                <li><a href="#">Sejarah Singkat</a></li>
+                <li><a href="#">Struktur Organisasi</a></li>
+                <li><a href="#">Guru dan Staff</a></li>
+                <li><a href="#">Fasilitas</a></li>
+            </ul>
+        </li>
+        <li>
+            <label for="btn-2" class="show">Akademik +</label>
+            <a href="#">Akademik
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <input type="checkbox" id="btn-2">
+            <ul>
+                <li><a href="#">Kalender Akademik</a></li>
+                <li><a href="#">Mata Pelajaran</a></li>
+                {{-- <li>
           <label for="btn-3" class="show">More +</label>
           <a href="#">More <span class="fa fa-plus"></span></a>
           <input type="checkbox" id="btn-3">
@@ -191,22 +194,22 @@
             <li><a href="#">Submenu-3</a></li>
           </ul>
         </li> --}}
-      </ul>
-    </li>
-    <li>
-      <label for="btn-3" class="show">Kesiswaan +</label>
-      <a href="#">Kesiswaan
-        <i class='bx bx-chevron-down'></i>
-      </a>
-      <input type="checkbox" id="btn-3">
-      <ul>
-        <li><a href="#">OSIS</a></li>
-        <li><a href="#">Ekstrakulikuler</a></li>
-        <li><a href="#">Kelas</a></li>
-        <li><a href="#">Prestasi Siswa</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Galeri</a></li>
-    <li><a href="#">Kontak</a></li>
-  </ul>
+            </ul>
+        </li>
+        <li>
+            <label for="btn-3" class="show">Kesiswaan +</label>
+            <a href="#">Kesiswaan
+                <i class='bx bx-chevron-down'></i>
+            </a>
+            <input type="checkbox" id="btn-3">
+            <ul>
+                <li><a href="#">OSIS</a></li>
+                <li><a href="#">Ekstrakulikuler</a></li>
+                <li><a href="#">Kelas</a></li>
+                <li><a href="#">Prestasi Siswa</a></li>
+            </ul>
+        </li>
+        <li><a href="/posts">Berita</a></li>
+        <li><a href="#">Kontak</a></li>
+    </ul>
 </nav>
