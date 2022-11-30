@@ -4,17 +4,42 @@ use App\Models\Category;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\DashboardCategoryController;
-use App\Http\Controllers\DashboardGalleryController;
-use App\Http\Controllers\DashboardStaffController;
-use App\Http\Controllers\DashboardVisionController;
-use App\Http\Controllers\DashboardVisiMisiController;
-use App\Http\Controllers\DashboardSambutanController;
-use App\Http\Controllers\DashboardSejarahSingkatController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ExtracurricularController;
+use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TapelController;
+use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\MappingMapelController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\KkmMapelController;
+use App\Http\Controllers\Admin\PembelajaranController;
+use App\Http\Controllers\Admin\IntervalPredikatController;
+use App\Http\Controllers\Admin\KdMapelController;
+use App\Http\Controllers\Teacher\KdMapelGuruController;
+use App\Http\Controllers\Teacher\RencanaPenilaianSumatifController;
+use App\Http\Controllers\Teacher\RencanaPenilaianFormatifController;
+use App\Http\Controllers\Teacher\RencanaBobotPenilaianController;
+use App\Http\Controllers\Teacher\NilaiFormatifController;
+use App\Http\Controllers\Teacher\NilaiSumatifController;
+use App\Http\Controllers\Teacher\NilaiSumatifAkhirController;
+use App\Http\Controllers\Teacher\KirimNilaiAkhirRapotController;
+use App\Http\Controllers\Teacher\KirimNilaiFormatifController;
+use App\Http\Controllers\Walikelas\PesertaDidikController;
+use App\Http\Controllers\Walikelas\StatusPenilaianGuruController;
+use App\Http\Controllers\Walikelas\HasilPengelolaanNilaiController;
+use App\Http\Controllers\Student\NilaiAkhirSemesterController;
+use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Walikelas\HasilPengelolaanNilai;
+use App\Models\Pembelajaran;
+use App\Models\RencanaPenilaianSumatif;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,21 +61,10 @@ use App\Http\Controllers\DashboardSejarahSingkatController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/coba', function() {
-    return view('coba', [
-        "title" => "Home",
-        "active" => "Home"
-    ]);
-});
-
-Route::get('/galeri', function() {
-    return view('galeri', [
-        "title" => "geleri",
-        "active" => "galeri"
-    ]);
-});
-
-
+Route::get('/visionMision', [ProfileController::class, 'visionMision']);
+Route::get('/greeting', [ProfileController::class, 'greeting']);
+Route::get('/history', [ProfileController::class, 'history']);
+Route::get('/structure', [ProfileController::class, 'structure']);
 
 Route::get('/categories', function() {
         return view('categories', [
@@ -60,45 +74,105 @@ Route::get('/categories', function() {
     ]);
 });
 
+Route::get('/posts', [PostController::class, 'indexFE']);
+Route::get('/post/{post:slug}', [PostController::class, 'showFE']);
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'store'])->name('login');
+Route::post('/settingtapel', [LoginController::class, 'setting_tapel'])->name('setting.tapel');
+// Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 
 
-Route::get('/posts', [PostController::class, 'index']);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::group(['middleware' => 'checkRole:1'], function () {
+        Route::group(['prefix' => 'admin'], function () {
+            Route::get('profiles/checkSlug', [ProfileController::class, 'checkSlug']);
+            Route::resource('profiles', ProfileController::class);
 
-Route::get('/post/{post:slug}', [PostController::class, 'show']);
+            Route::get('posts/checkSlug', [PostController::class, 'checkSlug']);
+            Route::resource('posts', PostController::class);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+            Route::get('categories/checkSlug', [CategoryController::class, 'checkSlug']);
+            Route::resource('categories', CategoryController::class);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+            Route::resource('galleries', GalleryController::class);
 
-Route::get('/dashboard', function() {
-    return view('dashboard.index');
-})->middleware('auth');
+            Route::get('extracurriculars/checkSlug', [ExtracurricularController::class, 'checkSlug']);
+            Route::resource('extracurriculars', ExtracurricularController::class);
 
-Route::middleware('auth')->group(function() {
-    Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
-    Route::resource('/dashboard/posts', DashboardPostController::class);
+            Route::resource('teachers', TeacherController::class);
 
-    // Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
-    // Route::resource('/dashboard/categories', DashboardCategoryController::class)->scoped(['category' => 'slug']);
-    // Route::get('/dashboard/categories/edit/{category:slug}', [DashboardCategoryController::class, 'edit']);
-    // Route::get('/dashboard/categories', [DashboardCategoryController::class, 'index']);
+            Route::resource('users', UserController::class);
 
-    Route::resource('/dashboard/galleries', DashboardGalleryController::class);
+            Route::resource('tapel', TapelController::class);
 
-    Route::resource('/dashboard/staffs', DashboardStaffController::class);
+            Route::resource('subjects', SubjectController::class);
 
-    Route::resource('/dashboard/visions', DashboardVisionController::class);
+            Route::resource('mapping', MappingMapelController::class);
 
-    Route::resource('/dashboard/visiMisi', DashboardVisiMisiController::class);
+            Route::resource('kkm', KkmMapelController::class);
 
-    Route::resource('/dashboard/sambutan', DashboardSambutanController::class);
+            Route::resource('interval', IntervalPredikatController::class);
 
-    Route::get('/dashboard/sejarahSingkat/checkSlug', [DashboardPostController::class, 'checkSlug']);
+            Route::resource('kd', KdMapelController::class);
 
-    Route::resource('/dashboard/sejarahSingkat', DashboardSejarahSingkatController::class);
+            Route::post('kelas/group', [KelasController::class, 'store_group'])->name('kelas.group');
+            Route::post('kelas/group/{group}', [KelasController::class, 'delete_group'])->name('kelas.group.delete');
+            Route::resource('kelas', KelasController::class);
+
+            Route::resource('students', StudentController::class);
+
+            Route::post('pembelajaran/settings', [PembelajaranController::class, 'settings'])->name('pembelajaran.settings');
+            Route::resource('pembelajaran', PembelajaranController::class);
+
+            Route::get('getKelas/ajax/{id}', [AjaxController::class, 'ajax_kelas']);
+
+        });
+    });
+
+    Route::group(['middleware' => 'checkRole:2'], function () {
+        Route::group(['prefix' => 'teacher'], function () {
+            Route::get('akses', [LoginController::class, 'ganti_akses'])->name('akses');
+
+            Route::group(['middleware' => 'checkAksesGuru:Guru Mapel'], function () {
+                Route::resource('ck', KdMapelGuruController::class);
+
+                Route::resource('rencanasumatif', RencanaPenilaianSumatifController::class);
+
+                Route::resource('rencanaformatif', RencanaPenilaianFormatifController::class);
+
+                Route::resource('bobotnilai', RencanaBobotPenilaianController::class);
+
+                Route::resource('nilaiformatif', NilaiFormatifController::class);
+
+                Route::resource('nilaisumatif', NilaiSumatifController::class);
+
+                Route::resource('nilaisumatifakhir', NilaiSumatifAkhirController::class);
+
+                Route::resource('kirimnilaiakhir', KirimNilaiAkhirRapotController::class);
+
+                // Route::resource('kirimnilaiformatif', KirimNilaiFormatifController::class);
+
+
+
+            });
+
+            Route::group(['middleware' => 'checkAksesGuru:Wali Kelas'], function () {
+                Route::get('pesertadidik', [PesertaDidikController::class, 'index'])->name('pesertadidik');
+
+                Route::get('statusnilaiguru', [StatusPenilaianGuruController::class, 'index'])->name('statusnilaiguru');
+
+                Route::get('hasilnilai', [HasilPengelolaanNilaiController::class, 'index'])->name('hasilnilai');
+            });
+        });
+
+    });
+
+    Route::group(['middleware' => 'checkRole:3'], function () {
+        Route::get('nilaiakhirsemester', [NilaiAkhirSemesterController::class, 'index'])->name('nilaiakhirsemester');
+    });
 });
 
 
