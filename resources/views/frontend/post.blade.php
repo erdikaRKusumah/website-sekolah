@@ -43,7 +43,7 @@
                         <div class="blog-tiltle_block">
                             <h4><a href="{{ $post->slug }}">{{ $post->title }}</a></h4>
                             <h6> <a href="#"><i class="fa fa-user"
-                                        aria-hidden="true"></i><span>{{ $post->author->name }}</span> </a> | <a
+                                        aria-hidden="true"></i><span>{{ $post->user->username }}</span> </a> | <a
                                     href="#"><i class="fa fa-tags"
                                         aria-hidden="true"></i><span>{{ $post->category->name }}</span></a></h6>
                             {!! $post->body !!}

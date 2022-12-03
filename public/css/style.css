@@ -39,7 +39,7 @@ a {
     transition: all 0.3s ease;
 }
 a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
     color: #fff;
 }
 
@@ -226,6 +226,189 @@ a:hover {
 }
 
 //events
+.events {
+    padding: 98px 0;
+}
+
+.event-title {
+    font-weight: 700;
+    margin: 0 0 24px;
+}
+
+.event-date {
+    background: #cbb58b;
+    padding: 20px 5px;
+}
+.event-date h4 {
+    font-size: 76px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+.event-date span {
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    display: block;
+}
+
+.event-time {
+    background: #b39a6b;
+    padding: 8px 0;
+    display: block;
+    color: #e8dabe;
+    text-align: center;
+}
+
+.event-heading {
+    margin: 0 0 20px;
+}
+.event-heading h3 {
+    font-weight: 700;
+    margin: 0 0 24px;
+}
+.event-heading p {
+    line-height: 1.8;
+}
+
+.event-hilights h5 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 24px;
+}
+
+.event-highlight-discription {
+    margin: 50px 0 0px;
+}
+.event-highlight-discription p {
+    line-height: 1.8;
+    margin: 0 0 50px;
+}
+
+.event-toggle {
+    text-transform: uppercase;
+    font-size: 15px;
+    text-decoration: underline;
+    color: #cbb58b;
+    font-weight: 700;
+}
+
+.event-toggle:focus {
+    color: #cbb58b;
+}
+
+.event-toggle:hover {
+    color: #b39a6b;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.tab-list {
+    color: #2d2d2d;
+    font-weight: 700;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    border-bottom: 2px solid #cbb58b;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-top: 1px solid #fff;
+    color: #cbb58b;
+}
+
+.nav-tabs {
+    border: none;
+    float: right;
+}
+.nav-tabs .nav-link {
+    border-bottom: 1px solid #eee;
+}
+
+.nav-special-br {
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+    border-color: #fff #fff #fff;
+    color: #cbb58b;
+    border-bottom: 2px solid #cbb58b;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.event-underline {
+    margin: 68px 0 68px 0;
+}
+
+@media (max-width: 1200px) {
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .event-date {
+        padding: 12px 5px;
+    }
+    .event-date h4 {
+        font-size: 36px;
+    }
+    .event-date span {
+        font-size: 15px;
+    }
+    .event-time {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-tabs {
+        float: left;
+    }
+    .event-time {
+        font-size: 17px;
+    }
+    .event-heading {
+        margin: 0 0 30px;
+    }
+    .event-heading h3 {
+        margin: 12px 0;
+        font-size: 21px;
+    }
+    .event-heading p {
+        font-size: 15px;
+    }
+    .tab-content img {
+        width: 100%;
+        margin: 0 0 12px;
+    }
+    .event-underline {
+        margin: 20px 0 30px 0;
+    }
+    .event-highlight-discription {
+        margin: 12px 0 0px;
+    }
+    .event-highlight-discription p {
+        margin: 0 0 8px;
+    }
+}
+
+@media (max-width: 320px) {
+    .nav-link {
+        padding: 4px 7px;
+        font-size: 13px;
+    }
+}
+
+//event
 .event {
     padding: 97px 0;
     background: #fff;
@@ -340,7 +523,7 @@ a:hover {
 
 .event_date {
     width: 82px;
-    background: #665c7c;
+    background: #4fa7ff;
     float: left;
     text-align: center;
     border-radius: 2px;
@@ -350,7 +533,7 @@ a:hover {
 }
 
 .event-date-wrap {
-    border: 1px dashed #8d84a0;
+    border: 1px dashed white;
     margin: 8px 8px;
     padding: 4px 0;
 }
@@ -472,11 +655,8 @@ a:hover {
 }
 
 //berita
-.blog-post {
-    margin-top: 90px;
-}
 .blog-wrap {
-    padding: 98px 0;
+    margin-top: 90px;
 }
 
 .blog-img_block {
@@ -573,6 +753,7 @@ a:hover {
     padding: 8px 16px;
     border-radius: 2px;
     font-size: 15px;
+    margin-top: 20px;
 }
 
 .btn-blogsearch {
@@ -583,7 +764,7 @@ a:hover {
 }
 
 .blog-category_block {
-    padding: 50px 0;
+    padding: 30px 0;
 }
 .blog-category_block h3 {
     font-weight: 700;

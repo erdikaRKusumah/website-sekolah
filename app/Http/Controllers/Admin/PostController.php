@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\storage;
+use Illuminate\Support\Facades\DB;
+
 
 class PostController extends Controller
 {
@@ -49,6 +51,14 @@ class PostController extends Controller
             "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString(),
             "categories" => Category::all()
         ]);
+    }
+
+    public function announcements()
+    {
+        $title = "Pengumuman";
+        $announcements = DB::table("posts")->select('body', 'excerpt', 'date', 'title', 'created_at')->where('category_id', 5)->get();
+        return view('frontend.announcements', compact('title', 'announcements'));
+
     }
 
     /**

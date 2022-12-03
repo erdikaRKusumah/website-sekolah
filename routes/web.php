@@ -75,6 +75,7 @@ Route::get('/categories', function() {
 });
 
 Route::get('/posts', [PostController::class, 'indexFE']);
+Route::get('/announcements', [PostController::class, 'announcements']);
 Route::get('/post/{post:slug}', [PostController::class, 'showFE']);
 
 Route::get('/login', [LoginController::class, 'index']);

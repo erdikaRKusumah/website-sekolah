@@ -21,7 +21,8 @@ class HomeController extends Controller
         $sambutan = DB::table("profiles")->select('body', 'image')->where('title', 'Sambutan Singkat')->first();
         $sejarahSingkat = DB::table("profiles")->select('body', 'image')->where('title', 'Sejarah Singkat')->first();
         $title = '';
-        // $announcements = Post::with('category')->where('name', 'Pengumuman')->first();
+        $announcements = DB::table("posts")->select('slug', 'body', 'excerpt', 'created_at', 'title')->where('category_id', 5)->get();
+        $agendas = DB::table("posts")->select('slug', 'body', 'excerpt', 'date', 'title')->where('category_id', 4)->get();
 
         $jumlah_guru = Teacher::all()->count();
         $jumlah_siswa = Student::where('status', 1)->count();
@@ -36,11 +37,11 @@ class HomeController extends Controller
             $title = ' by '. $author->name;
         }
 
-        return view('frontend.home', compact('visi', 'misi', 'sambutan', 'sejarahSingkat', 'jumlah_guru', 'jumlah_siswa', 'jumlah_kelas'), [
+        return view('frontend.home', compact('visi', 'misi', 'sambutan', 'sejarahSingkat', 'jumlah_guru', 'jumlah_siswa', 'jumlah_kelas', 'announcements', 'agendas'), [
             "title" => "Home" . $title,
             // "posts" => Post::all()
             "home" => "active",
-            "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString(),
+            "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(4)->withQueryString(),
             "galleries" => Gallery::all()
         ]);
 

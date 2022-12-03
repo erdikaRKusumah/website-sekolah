@@ -277,7 +277,7 @@
                 <div class="col-md-8">
                     <h2 class="mt-5">Sejarah Singkat</h2>
                     <p>SMPN 1 Cilamaya Wetan</p>
-                    <p style="color: white !important;">{!! $sejarahSingkat->body !!}</p>
+                    <p>{!! $sejarahSingkat->body !!}</p>
                     <a href="/history" class="btn btn-history mb-5">Selengkapnya..</a>
 
                 </div>
@@ -312,7 +312,7 @@
 
     </section>
 
-    {{-- <section class="our_courses" style="background: #f2f2f2;">
+    <section class="our_courses" style="background: #f2f2f2;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -346,10 +346,10 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     {{-- end  --}}
     {{-- two column  --}}
-    {{-- <section class="event">
+    <section class="event">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -360,8 +360,8 @@
                                         class="img-fluid" alt="event-img">
                                 </div><!-- // end .col-sm-3 -->
                                 <div class="col-sm-9">
-                                    <h3><a href="{{ $announcement->id }}">{{ $announcement->title }}</a></h3>
-                                    <span>{{ $announcement->date }}</span>
+                                    <h3><a href="/announcements">{{ $announcement->title }}</a></h3>
+                                    <span>{{ date('d/m/y', strtotime($announcement->created_at)) }}</span>
                                     <p>{{ $announcement->excerpt }}</p>
 
                                 </div><!-- // end .col-sm-7 -->
@@ -375,12 +375,12 @@
                             @foreach ($agendas as $agenda)
                                 <div class="event_date">
                                     <div class="event-date-wrap">
-                                        <p>{{ date('d', strtotime($agenda->date)) }} ?></p>
+                                        <p>{{ date('d', strtotime($agenda->date)) }}</p>
                                         <span>{{ date('M. y', strtotime($agenda->date)) }}</span>
                                     </div>
                                 </div>
                                 <div class="date-description">
-                                    <h3><a href="{{ $agenda->id }}">{{ $agenda->title }}</a></h3>
+                                    <h3><a href="/adgendas">{{ $agenda->title }}</a></h3>
                                     <p>{{ $agenda->excerpt }}</p>
                                     <hr class="event_line">
                                 </div>
@@ -393,7 +393,7 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
 
     <div class="detailed-chart">
         <div class="container">
@@ -403,7 +403,7 @@
                         <img src="{{ asset('assets') }}/chart-icon_1.png" class="img-fluid" alt="chart_icon">
                     </div>
                     <div class="chart-text">
-                        <p><span class="counter">{{ $jumlah_guru }}</span> Guru
+                        <p><span class="counter" data-val="{{ $jumlah_guru }}">0</span> Guru
                         </p>
                     </div>
                 </div>
@@ -412,7 +412,7 @@
                         <img src="{{ asset('assets') }}/chart-icon_2.png" class="img-fluid" alt="chart_icon">
                     </div>
                     <div class="chart-text">
-                        <p><span class="counter">{{ $jumlah_siswa }}</span> Siswa
+                        <p><span class="counter" data-val="{{ $jumlah_siswa }}">0</span> Siswa
                         </p>
                     </div>
                 </div>
@@ -421,7 +421,7 @@
                         <img src="{{ asset('assets') }}/chart-icon_3.png" class="img-fluid" alt="chart_icon">
                     </div>
                     <div class="chart-text">
-                        <p><span class="counter">{{ $jumlah_kelas }}</span> Kelas
+                        <p><span class="counter" data-val="{{ $jumlah_kelas }}">0</span> Kelas
                         </p>
                     </div>
                 </div>

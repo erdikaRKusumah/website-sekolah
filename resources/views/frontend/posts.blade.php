@@ -106,7 +106,7 @@
 
 @endsection --}}
 
-    <section class="blog-post">
+    <section class="blog-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -120,10 +120,10 @@
                                 </div>
                             </div>
                             <div class="blog-tiltle_block">
-                                <h4><a href="{{ $post->slug }}">{{ $post->title }}</a></h4>
+                                <h4><a href="/post/{{ $post->slug }}">{{ $post->title }}</a></h4>
                                 <h6> <a href="#"><i class="fa fa-user"
                                             aria-hidden="true"></i><span>{{ $post->user->username }}</span> </a> | <a
-                                        href="#"><i class="fa fa-tags"
+                                        href="/posts?category={{ $post->category->slug }}"><i class="fa fa-tags"
                                             aria-hidden="true"></i><span>{{ $post->category->name }}</span></a></h6>
                                 {{ $post->excerpt }}
                                 <div class="blog-icons">
@@ -137,18 +137,18 @@
                 </div>
                 <div class="col-md-4">
                     <form action="/posts" method="get">
-                        {{-- @if (request('category'))
+                        @if (request('category'))
                             <input type="hidden" name="category" value="{{ request('category') }}">
                         @endif
 
                         @if (request('user'))
                             <input type="hidden" name="user" value="{{ request('user') }}">
                         @endif
-                        <input type="text" name="keyword" placeholder="Search" class="blog-search"
-                            value="{{ request('search') }}"> --}}
-                        <input type="text" name="keyword" placeholder="Search" class="blog-search" required>
+                        <input type="text" name="search" placeholder="Search" class="blog-search"
+                            value="{{ request('search') }}">
+                        {{-- <input type="text" name="keyword" placeholder="Search" class="blog-search" required>
+                        <button type="submit" class="btn btn-warning btn-blogsearch">SEARCH</button> --}}
                         <button type="submit" class="btn btn-warning btn-blogsearch">SEARCH</button>
-                        {{-- <button type="submit" class="btn btn-warning btn-blogsearch">SEARCH</button> --}}
                     </form>
                     <div class="blog-category_block">
                         <h3>Kategori</h3>

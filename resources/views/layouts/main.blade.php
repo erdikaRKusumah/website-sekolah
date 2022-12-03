@@ -9,23 +9,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/theme/css/bootstrap.min.css">
+
     {{-- <link rel="stylesheet" href="/css/login.css"> --}}
     {{-- <link rel="stylesheet" href="/css/home.css"> --}}
 
     <!-- bootstrap icon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
-
-    {{-- w3newbie --}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="{{ asset('css') }}/navbar.css">
     <link rel="stylesheet" href="{{ asset('css') }}/style.css">
 
@@ -76,13 +67,35 @@
 
     {{-- coba --}}
     <script src="/plugins/jquery/jquery.min.js"></script>
-    <script src="/plugins/popper/popper.js"></script>
+    <script src="/assets/theme/js/tether.min.js"></script>
+    {{-- <script src="/plugins/popper/popper.js"></script> --}}
     <script src="/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/theme/js/waypoints.min.js"></script>
+    <script src="/assets/theme/js/counterup.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/countup@1.8.2/dist/countUp.min.js"></script> --}}
+
     <script src="/plugins/custom/main.js"></script>
-    {{-- <script src="/js/app.js"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <script>
+        window.onscroll = function(e) {
+            let valueDisplay = document.querySelectorAll(".counter");
+            let interval = 1000;
+
+            valueDisplay.forEach((valueDisplay) => {
+                let startValue = 0;
+                let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+                let duration = Math.floor(interval / endValue);
+                let counter = setInterval(function() {
+                    startValue += 1;
+                    valueDisplay.textContent = startValue;
+                    if (startValue == endValue) {
+                        clearInterval(counter);
+                    }
+                }, duration);
+            });
+
+        }
     </script>
+
 </body>
 
 </html>
