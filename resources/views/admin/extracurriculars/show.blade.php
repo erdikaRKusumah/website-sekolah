@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <section>
         <div class="container-fluid">
             <div class="row mb-2">
@@ -22,19 +22,17 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <h1 class="mt-3 ml-3">{{ $profile->title }}</h1>
+                        <h1 class="mt-3 ml-3">{{ $extracurricular->name }}</h1>
                         <div class="card-body">
                             <div class="col-4" style="max-height: 350px; overflow: hidden;">
-                                <img src="{{ asset('storage/' . $profile->image) }}" class="img-fluid mt-3">
+                                <img src="{{ asset('storage/' . $extracurricular->image) }}" class="img-fluid mt-3">
                             </div>
-                            <article class="col-6 my-3 fs-5">
-                                {!! $profile->body !!}
-
-                            </article>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-@endsection
+
+</div>
+@include('layouts.main.footer')

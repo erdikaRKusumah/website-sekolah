@@ -23,6 +23,14 @@ class GalleryController extends Controller
         ]);
     }
 
+    public function indexFE()
+    {
+        return view('frontend.galleries', [
+            'title' => 'Galeri',
+            'galleries' => Gallery::latest()->paginate(12)
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

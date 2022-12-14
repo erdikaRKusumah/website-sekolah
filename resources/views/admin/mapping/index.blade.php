@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -78,4 +78,6 @@
         <!--/. container-fluid -->
     </section>
     <!-- /.content -->
-@endsection
+
+</div>
+@include('layouts.main.footer')

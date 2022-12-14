@@ -6,6 +6,7 @@ use App\Models\Tapel;
 use App\Models\User;
 use App\Models\Teacher;
 use App\Models\Kelas;
+use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -129,6 +130,43 @@ class LoginController extends Controller
                 'alert-type' => 'success'
             );
             return back()->with($notifSuccess);
+        }
+    }
+
+    public function view_ganti_password()
+    {
+        $title = 'Ganti Password';
+        return view('auth.ganti_password', compact('title'));
+    }
+
+    public function ganti_password(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password_lama' => ['required', new MatchOldPassword],
+            'password_baru' => 'required|min:6',
+            'konfirmasi_password' => 'required|same:password_baru',
+        ]);
+
+        if ($validator->fails()) {
+            $notifError = array
+            (
+                'message' => $validator->messages()->all()[0],
+                'alert-type' => 'error'
+            );
+            return back()->with($notifError)->withInput();
+        } else {
+            $user = User::findorfail(Auth::id());
+            $data = [
+                'password' => bcrypt($request->password_baru),
+            ];
+            $user->update($data);
+            Auth::logout();
+            $notifSuccess = array
+            (
+                'message' => 'Password berhasil diganti, silahkan login!',
+                'alert-type' => 'success'
+            );
+            return redirect('/login')->with($notifSuccess);
         }
     }
 

@@ -24,6 +24,14 @@ class SubjectController extends Controller
         return view('admin.subjects.index', compact('title', 'subjects', 'tapel'));
     }
 
+    public function showSubjects()
+    {
+        $title = 'Data Mata Pelajaran';
+        $tapel = Tapel::all();
+        $subjects = Subject::orderBy('subject_name', 'ASC')->get();
+        return view('frontend.academic.subjects', compact('title', 'subjects', 'tapel'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

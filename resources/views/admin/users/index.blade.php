@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -76,13 +76,13 @@
                                                 <label for="gender" class="col-sm-3 col-form-label">Jenis
                                                     Kelamin</label>
                                                 <div class="col-sm-9 pt-1">
-                                                    <label class="radio-inline mr-3"><input type="radio" name="gender"
-                                                            value="L" @if (old('gender') == 'L') checked @endif
-                                                            required>
+                                                    <label class="radio-inline mr-3"><input type="radio"
+                                                            name="gender" value="L"
+                                                            @if (old('gender') == 'L') checked @endif required>
                                                         Laki-Laki</label>
-                                                    <label class="radio-inline mr-3"><input type="radio" name="gender"
-                                                            value="P" @if (old('gender') == 'P') checked @endif
-                                                            required>
+                                                    <label class="radio-inline mr-3"><input type="radio"
+                                                            name="gender" value="P"
+                                                            @if (old('gender') == 'P') checked @endif required>
                                                         Perempuan</label>
                                                 </div>
                                             </div>
@@ -97,8 +97,8 @@
                                             <div class="form-group row">
                                                 <label for="email" class="col-sm-3 col-form-label">Email</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" id="email" name="email"
-                                                        placeholder="Email" value="{{ old('email') }}">
+                                                    <input type="email" class="form-control" id="email"
+                                                        name="email" placeholder="Email" value="{{ old('email') }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -161,7 +161,8 @@
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning btn-sm"
-                                                        data-toggle="modal" data-target="#modal-edit{{ $user->id }}">
+                                                        data-toggle="modal"
+                                                        data-target="#modal-edit{{ $user->id }}">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </button>
                                                 </td>
@@ -173,8 +174,8 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title">Edit {{ $title }}</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
@@ -251,4 +252,6 @@
         <!--/. container-fluid -->
     </section>
     <!-- /.content -->
-@endsection
+
+</div>
+@include('layouts.main.footer')

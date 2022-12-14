@@ -4,14 +4,6 @@
         <span class="brand-text font-weight-light">SACITAN</span>
     </a>
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
-            </div>
-        </div>
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
@@ -33,38 +25,44 @@
                 </li>
                 <li class="nav-header">INFORMASI</li>
                 <li class="nav-item">
-                    <a href="/admin/profiles" class="nav-link {{ Request::is('admin/profiles') ? 'active' : '' }}">
+                    <a href="/admin/profiles"
+                        class="nav-link {{ Request::is('admin/profiles', 'admin/profiles/*') ? 'active' : '' }}">
                         <i class="nav-icon bx bxs-school"></i>
                         <p>
                             Profil
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @yield('main')">
-                    <a href="#" class="nav-link @yield('berita')">
+                <li
+                    class="nav-item {{ Request::is('admin/posts', 'admin/categories', 'admin/categories/*', 'admin/posts/*') ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::is('admin/posts', 'admin/categories', 'admin/categories/*', 'admin/posts/*') ? 'active' : '' }}">
                         <i class="nav-icon bx bxs-news"></i>
                         <p>
-                            Berita
+                            Informasi
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/posts" class="nav-link @yield('posts')">
+                            <a href="/admin/posts"
+                                class="nav-link {{ Request::is('admin/posts', 'admin/posts/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List Berita</p>
+                                <p>List Informasi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/categories" class="nav-link @yield('categories')">
+                            <a href="/admin/categories"
+                                class="nav-link {{ Request::is('admin/categories') || Request::is('admin/categories/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Kategori Berita</p>
+                                <p>Kategori Informasi</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/galleries" class="nav-link {{ Request::is('admin/galleries') ? 'active' : '' }}">
+                    <a href="/admin/galleries"
+                        class="nav-link {{ Request::is('admin/galleries', 'admin/galleries/*') ? 'active' : '' }}">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Galeri
@@ -73,7 +71,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="/admin/extracurriculars"
-                        class="nav-link {{ Request::is('admin/extracurriculars') ? 'active' : '' }}">
+                        class="nav-link {{ Request::is('admin/extracurriculars', 'admin/extracurriculars/*') ? 'active' : '' }}">
                         <i class='nav-icon bx bxs-basketball'></i>
                         <p>
                             Ekstrakulikuler
@@ -81,8 +79,10 @@
                     </a>
                 </li>
                 <li class="nav-header">AKADEMIK</li>
-                <li class="nav-item @yield('akademik')">
-                    <a href="#" class="nav-link @yield('dataMaster')">
+                <li
+                    class="nav-item {{ Request::is('admin/teachers', 'admin/tapel', 'admin/kelas', 'admin/kelas/*', 'admin/students', 'admin/subjects', 'admin/pembelajaran', 'admin/pembelajaran/*') ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::is('admin/teachers', 'admin/tapel', 'admin/kelas', 'admin/kelas/*', 'admin/students', 'admin/subjects', 'admin/pembelajaran', 'admin/pembelajaran/*') ? 'active' : '' }}">
                         <i class="nav-icon bx bxs-news"></i>
                         <p>
                             Data Master
@@ -91,37 +91,42 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/teachers" class="nav-link @yield('teachers')">
+                            <a href="/admin/teachers"
+                                class="nav-link {{ Request::is('admin/teachers') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Guru</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/tapel" class="nav-link @yield('tapel')">
+                            <a href="/admin/tapel" class="nav-link {{ Request::is('admin/tapel') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Tahun Pelajaran</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/subjects" class="nav-link @yield('subjects')">
+                            <a href="/admin/subjects"
+                                class="nav-link {{ Request::is('admin/subjects') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Mata Pelajaran</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/kelas" class="nav-link @yield('kelas')">
+                            <a href="/admin/kelas"
+                                class="nav-link {{ Request::is('admin/kelas', 'admin/kelas/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Kelas & Wali</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/students" class="nav-link @yield('students')">
+                            <a href="/admin/students"
+                                class="nav-link {{ Request::is('admin/students') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Siswa</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/pembelajaran" class="nav-link @yield('pembelajaran')">
+                            <a href="/admin/pembelajaran"
+                                class="nav-link {{ Request::is('admin/pembelajaran', 'admin/pembelajaran/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pembelajaran</p>
                             </a>
@@ -137,24 +142,47 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/grades" class="nav-link {{ Request::is('admin/grades') ? 'active' : '' }}">
-                        <i class='nav-icon bx bxs-report'></i>
+                    <a href="/admin/kd" class="nav-link {{ Request::is('admin/kd', 'admin/kd/*') ? 'active' : '' }}">
+                        <i class='nav-icon fas fa-clipboard-list'></i>
                         <p>
-                            Nilai
+                            Data Kompetensi
                         </p>
                     </a>
                 </li>
-                <li class="nav-item bg-danger mt-2">
-                    <form action="/logout" method="post">
-                        @csrf
-                        <button type="submit" class="nav-link"
-                            onclick="return confirm('Apakah anda yakin ingin keluar ?')">
-                            <i style="color:white;" class="nav-icon fas fa-sign-out-alt"></i>
-                            <p style="color: white;">
-                                Keluar / Logout
-                            </p>
-                        </button>
-                    </form>
+                <li class="nav-item">
+                    <a href="/admin/kkm" class="nav-link {{ Request::is('admin/kkm') ? 'active' : '' }}">
+                        <i class='nav-icon fas fa-greater-than-equal'></i>
+                        <p>
+                            KKM Mapel
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/interval" class="nav-link {{ Request::is('admin/interval') ? 'active' : '' }}">
+                        <i class='nav-icon fas fa-columns'></i>
+                        <p>
+                            Interval Predikat
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">HASIL RAPORT</li>
+                <li class="nav-item">
+                    <a href="{{ route('statuspenilaian.index') }}"
+                        class="nav-link {{ Request::is('admin/statuspenilaian', 'admin/statuspenilaian/*') ? 'active' : '' }}">
+                        <i class='nav-icon fas fa-check-circle'></i>
+                        <p>
+                            Status Penilaian
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('pengelolaannilai.index') }}"
+                        class="nav-link {{ Request::is('admin/pengelolaannilai', 'admin/pengelolaannilai/*') ? 'active' : '' }}">
+                        <i class='nav-icon fas fa-check-square'></i>
+                        <p>
+                            Hasil Pengelolaan Nilai
+                        </p>
+                    </a>
                 </li>
         </nav>
     </div>

@@ -44,4 +44,36 @@
                             class="fas fa-bars"></i></a>
                 </li>
             </ul>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown pr-2">
+                    <!-- User Block  -->
+                    <a class="user-block" data-toggle="dropdown" href="#">
+                        <img class="img-circle" src="/dist/img/{{ Auth::user()->admin->image }}" alt="User Image">
+                        <span class="username">{{ Auth::user()->admin->full_name }}</span>
+                        <span class="description">Administrator</span>
+                    </a>
+                    <!-- End User Block  -->
+
+                    <!-- User Dropdown  -->
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Akun Saya</span>
+                        {{-- <div class="dropdown-divider"></div>
+                        <a href="{{ route('profile') }}" class="dropdown-item">
+                            <i class="fas fa-user mr-2"></i> Profile
+                        </a> --}}
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ route('gantipassword') }}" class="dropdown-item">
+                            <i class="fas fa-key mr-2"></i> Ganti Password
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer bg-danger"
+                            onclick="return confirm('Apakah anda yakin ingin keluar ?')"><i
+                                class="fas fa-sign-out-alt mr-1"></i> Keluar / Logout</a>
+                    </div>
+                    <!-- End User Dropdown  -->
+                </li>
+            </ul>
         </nav>

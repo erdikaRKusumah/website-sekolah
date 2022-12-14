@@ -42,7 +42,7 @@ class HomeController extends Controller
             // "posts" => Post::all()
             "home" => "active",
             "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(4)->withQueryString(),
-            "galleries" => Gallery::all()
+            "galleries" => Gallery::latest()->paginate(8)
         ]);
 
     }

@@ -12,22 +12,6 @@ body {
     padding: 10;
 }
 
-h1 {
-    font-size: 54px;
-}
-
-h2 {
-    font-size: 35px;
-}
-
-h3 {
-    font-size: 24px;
-}
-
-h4 {
-    font-size: 20px;
-}
-
 p {
     font-size: 17px;
 }
@@ -120,6 +104,7 @@ a:hover {
     color: #fff;
     margin-bottom: 40px;
     font-weight: 700;
+    font-size: 4rem;
 }
 @media (max-width: 576px) {
     .slider_title h1 {
@@ -228,6 +213,11 @@ a:hover {
 //events
 .events {
     padding: 98px 0;
+}
+
+.event a:hover {
+    text-decoration: none !important;
+    color: black;
 }
 
 .event-title {
@@ -594,20 +584,25 @@ a:hover {
     line-height: 30px;
 }
 
+@media (min-width: 757px) {
+    .history img {
+        float: left;
+    }
+}
+
 //galery
 .galery {
-    margin: 50px 1;
+    margin: 40px 1;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 25px;
 }
 .galery img {
     width: 100%;
-    height: 280px;
+    height: 250px;
     object-fit: cover;
     border: 1px solid #eee;
     box-shadow: 1px 2p 3px #ddd;
-    border-radius: 10px;
     box-sizing: border-box;
 }
 .galery h2 {
@@ -1071,6 +1066,7 @@ footer {
     color: #fff;
     padding-top: 2rem;
 }
+
 hr .light {
     border-top: 1px solid #d5d5d5;
     width: 75%;
@@ -1085,6 +1081,10 @@ hr .light-100 {
     width: 100%;
     margin-top: 0.8rem;
     margin-bottom: 1rem;
+}
+
+.footer h3 {
+    margin: 1rem;
 }
 
 .footer .bx-phone {

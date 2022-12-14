@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Walikelas;
 
 use App\Http\Controllers\Controller;
 use App\Models\NilaiAkhirRapot;
+use App\Models\NilaiFormatif;
 use App\Models\NilaiSumatif;
 use App\Models\NilaiSumatifAkhir;
 use App\Models\RencanaBobotPenilaian;
 use App\Models\RencanaPenilaianSumatif;
+use App\Models\RencanaPenilaianFormatif;
 use App\Models\MappingMapel;
 use App\Models\Kelas;
 use App\Models\Pembelajaran;
@@ -25,6 +27,20 @@ class StatusPenilaianGuruController extends Controller
         $id_kelas_diampu = Kelas::where('tapel_id', $tapel->id)->where('teacher_id', $guru->id)->get('id');
         $data_pembelajaran_kelas = Pembelajaran::whereIn('kelas_id', $id_kelas_diampu)->where('status', 1)->get();
         foreach ($data_pembelajaran_kelas as $pembelajaran) {
+
+            $rencana_nilai_formatif = RencanaPenilaianFormatif::where('pembelajaran_id', $pembelajaran->id)->first();
+            if (is_null($rencana_nilai_formatif)) {
+                $pembelajaran->rencana_nilai_formatif = 0;
+                $pembelajaran->nilai_formatif = 0;
+            } else {
+                $pembelajaran->rencana_nilai_formatif = 1;
+                $nilai_formatif = NilaiFormatif::where('rencana_penilaian_formatif_id', $rencana_nilai_formatif->id)->first();
+                if (is_null($nilai_formatif)) {
+                    $pembelajaran->nilai_formatif = 0;
+                } else {
+                    $pembelajaran->nilai_formatif = 1;
+                }
+            }
 
             $rencana_nilai_sumatif = RencanaPenilaianSumatif::where('pembelajaran_id', $pembelajaran->id)->first();
             if (is_null($rencana_nilai_sumatif)) {

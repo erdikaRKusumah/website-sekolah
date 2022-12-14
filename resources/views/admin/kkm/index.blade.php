@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -57,7 +57,8 @@
                                                         style="width: 100%;" required>
                                                         <option value="">-- Pilih Mata Pelajaran -- </option>
                                                         @foreach ($data_mapel as $mapel)
-                                                            <option value="{{ $mapel->id }}"> {{ $mapel->subject_name }}
+                                                            <option value="{{ $mapel->id }}">
+                                                                {{ $mapel->subject_name }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -149,7 +150,8 @@
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                                        <form action="{{ route('kkm.update', $kkm->id) }}" method="POST">
+                                                        <form action="{{ route('kkm.update', $kkm->id) }}"
+                                                            method="POST">
                                                             {{ method_field('PATCH') }}
                                                             @csrf
                                                             <div class="modal-body">
@@ -209,43 +211,38 @@
         </div>
         <!--/. container-fluid -->
     </section>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
-    <!-- end ajax -->
+</div>
+@include('layouts.main.footer')
 
-    <!-- ajax -->
-    <!-- jQuery -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('select[name="subject_id"]').on('change', function() {
-                var subject_id = $(this).val();
-                if (subject_id) {
-                    $.ajax({
-                        url: '/admin/getKelas/ajax/' + subject_id,
-                        type: "GET",
-                        dataType: "json",
-                        success: function(data) {
-                            $('select[name="kelas_id"').empty();
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="subject_id"]').on('change', function() {
+            var subject_id = $(this).val();
+            if (subject_id) {
+                $.ajax({
+                    url: '/admin/getKelas/ajax/' + subject_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="kelas_id"').empty();
 
+                        $('select[name="kelas_id"]').append(
+                            '<option value="">-- Pilih Kelas --</option>'
+                        );
+
+                        $.each(data, function(i, data) {
                             $('select[name="kelas_id"]').append(
-                                '<option value="">-- Pilih Kelas --</option>'
-                            );
-
-                            $.each(data, function(i, data) {
-                                $('select[name="kelas_id"]').append(
-                                    '<option value="' +
-                                    data.kelas_id + '">' + data.class_name +
-                                    '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('select[name="kelas_id"').empty();
-                }
-            });
+                                '<option value="' +
+                                data.kelas_id + '">' + data.class_name +
+                                '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('select[name="kelas_id"').empty();
+            }
         });
-    </script>
-@endsection
+    });
+</script>

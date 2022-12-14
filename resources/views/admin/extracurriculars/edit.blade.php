@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <section>
         <div class="container-fluid">
             <div class="row mb-2">
@@ -76,32 +76,34 @@
         </div>
     </section>
 
-    <script>
-        const name = document.querySelector('#name');
-        const slug = document.querySelector('#slug');
+</div>
+@include('layouts.main.footer')
 
-        name.addEventListener('change', function() {
-            fetch('/admin/extracurriculars/checkSlug?name=' + name.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
-        });
+<script>
+    const name = document.querySelector('#name');
+    const slug = document.querySelector('#slug');
 
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault();
-        });
+    name.addEventListener('change', function() {
+        fetch('/admin/extracurriculars/checkSlug?name=' + name.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug)
+    });
 
-        function previewImage() {
-            const image = document.querySelector('#image');
-            const imgPreview = document.querySelector('.img-preview');
+    document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault();
+    });
 
-            imgPreview.style.display = 'block';
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
 
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
+        imgPreview.style.display = 'block';
 
-            oFReader.onload = function(oFREvent) {
-                imgPreview.src = oFREvent.target.result;
-            }
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
         }
-    </script>
-@endsection
+    }
+</script>

@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <section>
         <div class="container-fluid">
             <div class="row mb-2">
@@ -58,8 +58,6 @@
                                             </td>
                                             <td>{{ $extracurricular->name }}</td>
                                             <td class="text-center">
-                                                <a href="/admin/extracurriculars/{{ $extracurricular->slug }}"
-                                                    class="btn btn-primary btn-sm"><i class="fas fa-eye fa-fw"></i></a>
                                                 <a href="/admin/extracurriculars/{{ $extracurricular->slug }}/edit"
                                                     class="btn btn-warning btn-sm"><i class="fas fa-edit fa-fw"></i></a>
                                                 <form action="/admin/extracurriculars/{{ $extracurricular->slug }}"
@@ -86,4 +84,6 @@
         </div>
     </section>
     <!-- /.container-fluid -->
-@endsection
+
+</div>
+@include('layouts.main.footer')

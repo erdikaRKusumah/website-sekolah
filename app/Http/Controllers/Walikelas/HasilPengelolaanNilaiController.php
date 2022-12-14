@@ -31,7 +31,7 @@ class HasilPengelolaanNilaiController extends Controller
         foreach ($data_anggota_kelas as $anggota_kelas) {
             $data_id_pembelajaran = Pembelajaran::where('kelas_id', $anggota_kelas->kelas_id)->whereIn('subject_id', $data_id_mapel)->get('id');
 
-            $data_nilai = NilaiAkhirRapot::whereIn('pembelajaran_id', $data_id_pembelajaran)->where('class_groups_id', $anggota_kelas->id)->get();
+            $data_nilai = NilaiAkhirRapot::whereIn('pembelajaran_id', $data_id_pembelajaran)->where('class_group_id', $anggota_kelas->id)->get();
 
             $anggota_kelas->data_nilai = $data_nilai;
         }

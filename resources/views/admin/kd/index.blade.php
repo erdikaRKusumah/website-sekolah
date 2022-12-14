@@ -1,7 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
-    <!-- Content Header (Page header) -->
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -57,7 +56,8 @@
                                                         style="width: 100%;" required>
                                                         <option value="">-- Pilih Mapel --</option>
                                                         @foreach ($data_mapel as $mapel)
-                                                            <option value="{{ $mapel->id }}">{{ $mapel->subject_name }}
+                                                            <option value="{{ $mapel->id }}">
+                                                                {{ $mapel->subject_name }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -153,7 +153,8 @@
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                                        <form action="{{ route('kd.update', $kd->id) }}" method="POST">
+                                                        <form action="{{ route('kd.update', $kd->id) }}"
+                                                            method="POST">
                                                             {{ method_field('PATCH') }}
                                                             @csrf
                                                             <div class="modal-body">
@@ -173,8 +174,8 @@
                                                                         class="col-sm-3 col-form-label">Kode</label>
                                                                     <div class="col-sm-9">
                                                                         <input type="text" class="form-control"
-                                                                            id="kode_kd" value="{{ $kd->kode_kd }}"
-                                                                            readonly>
+                                                                            id="kode_kd"
+                                                                            value="{{ $kd->kode_kd }}" readonly>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -220,6 +221,5 @@
         <!--/. container-fluid -->
     </section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-@endsection
+</div>
+@include('layouts.main.footer')

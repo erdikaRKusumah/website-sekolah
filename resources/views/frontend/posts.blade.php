@@ -122,8 +122,8 @@
                             <div class="blog-tiltle_block">
                                 <h4><a href="/post/{{ $post->slug }}">{{ $post->title }}</a></h4>
                                 <h6> <a href="#"><i class="fa fa-user"
-                                            aria-hidden="true"></i><span>{{ $post->user->username }}</span> </a> | <a
-                                        href="/posts?category={{ $post->category->slug }}"><i class="fa fa-tags"
+                                            aria-hidden="true"></i><span>{{ $post->user->admin->full_name }}</span> </a> |
+                                    <a href="/posts?category={{ $post->category->slug }}"><i class="fa fa-tags"
                                             aria-hidden="true"></i><span>{{ $post->category->name }}</span></a></h6>
                                 {{ $post->excerpt }}
                                 <div class="blog-icons">
@@ -161,10 +161,10 @@
                     </div>
                 </div>
             </div>
+            <div class="d-flex justify-content-center mb-3">
+                {{ $posts->links() }}
+            </div>
         </div>
 
-        <div class="d-flex justify-content-center">
-            {{ $posts->links() }}
-        </div>
     </section>
 @endsection

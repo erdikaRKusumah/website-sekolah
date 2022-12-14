@@ -23,6 +23,14 @@ class ExtracurricularController extends Controller
         ]);
     }
 
+    public function indexFE()
+    {
+        return view('frontend.kesiswaan.extracurriculars', [
+            'title' => 'Ekstrakulikuler',
+            'extracurriculars' => Extracurricular::latest()->paginate(12)
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -72,7 +80,10 @@ class ExtracurricularController extends Controller
      */
     public function show(Extracurricular $extracurricular)
     {
-        //
+        $title = 'Detail Informasi Sekolah';
+        return view('admin.extracurriculars.show', compact('title'), [
+            'extracurricular' => $extracurricular
+        ]);
     }
 
     /**

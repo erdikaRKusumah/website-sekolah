@@ -1,7 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
-    <!-- Content Header (Page header) -->
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -50,8 +49,8 @@
                                         </div>
                                         <label for="class_level" class="col-sm-2 col-form-label">Tingkatan Kelas</label>
                                         <div class="col-sm-4">
-                                            <select class="form-control" name="class_level" style="width: 100%;" required
-                                                onchange="this.form.submit();">
+                                            <select class="form-control" name="class_level" style="width: 100%;"
+                                                required onchange="this.form.submit();">
                                                 <option value="" disabled>-- Pilih Tingkatan Kelas --</option>
                                                 @foreach ($data_kelas as $kelas)
                                                     <option value="{{ $kelas->class_level }}"
@@ -104,20 +103,23 @@
         <!--/. container-fluid -->
     </section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <!-- jQuery -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
 
-            var count = 1;
+</div>
+@include('layouts.main.footer')
+<!-- Content Header (Page header) -->
+<!-- /.content-wrapper -->
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
 
-            dynamic_field(count);
+        var count = 1;
 
-            function dynamic_field(number) {
-                html = '<tr>';
-                html += `<td>
+        dynamic_field(count);
+
+        function dynamic_field(number) {
+            html = '<tr>';
+            html += `<td>
                   <select class="form-control" name="tipe[]" style="width: 100%;" required oninvalid="this.setCustomValidity('silakan pilih item dalam daftar')" oninput="setCustomValidity('')">
                     <option value="">-- Pilih Kompetensi -- </option>
                     <option value="1">Tujuan Pembelajaran</option>
@@ -125,37 +127,36 @@
                     <option value="3">Capaian Pembelajaran</option>
                   </select>
               </td>`;
-                html += `<td>
+            html += `<td>
                   <input type="text" class="form-control" name="kode_kd[]" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')">
               </td>`;
-                html += `<td>
+            html += `<td>
                   <textarea class="form-control" name="kompetensi_dasar[]" rows="2" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')"></textarea>
               </td>`;
-                html += `<td>
+            html += `<td>
                   <textarea class="form-control" name="ringkasan_kompetensi[]" rows="2" required oninvalid="this.setCustomValidity('data tidak boleh kosong')" oninput="setCustomValidity('')"></textarea>
               </td>`;
 
-                if (number > 1) {
-                    html +=
-                        '<td><button type="button" name="remove" class="btn btn-danger shadow btn-xs sharp remove"><i class="fa fa-trash"></i></button></td></tr>';
-                    $('tbody').append(html);
-                } else {
-                    html +=
-                        '<td><button type="button" name="add" id="add" class="btn btn-primary shadow btn-xs sharp"><i class="fa fa-plus"></i></button></td></tr>';
-                    $('tbody').html(html);
-                }
+            if (number > 1) {
+                html +=
+                    '<td><button type="button" name="remove" class="btn btn-danger shadow btn-xs sharp remove"><i class="fa fa-trash"></i></button></td></tr>';
+                $('tbody').append(html);
+            } else {
+                html +=
+                    '<td><button type="button" name="add" id="add" class="btn btn-primary shadow btn-xs sharp"><i class="fa fa-plus"></i></button></td></tr>';
+                $('tbody').html(html);
             }
+        }
 
-            $(document).on('click', '#add', function() {
-                count++;
-                dynamic_field(count);
-            });
-
-            $(document).on('click', '.remove', function() {
-                count--;
-                $(this).closest("tr").remove();
-            });
-
+        $(document).on('click', '#add', function() {
+            count++;
+            dynamic_field(count);
         });
-    </script>
-@endsection
+
+        $(document).on('click', '.remove', function() {
+            count--;
+            $(this).closest("tr").remove();
+        });
+
+    });
+</script>

@@ -40,16 +40,20 @@
                                             <th rowspan="2" class="text-center">Mata Pelajaran</th>
                                             <th rowspan="2" class="text-center">Kelas</th>
                                             <th rowspan="2" class="text-center">Nama Guru</th>
-                                            <th colspan="1" class="text-center" style="width: 200px;">Status
+                                            <th colspan="2" class="text-center" style="width: 200px;">Status
                                                 Perencanaan</th>
                                             <th rowspan="2" class="text-center" style="width: 50px;">Bobot</th>
-                                            <th colspan="2" class="text-center" style="width: 200px;">Status
+                                            <th colspan="3" class="text-center" style="width: 200px;">Status
                                                 Penilaian</th>
                                             <th colspan="1" class="text-center" style="width: 100px;">Status Nilai
                                                 Raport</th>
                                         </tr>
                                         <tr>
+                                            <th class="text-center" style="width: 50px;">Formatif</th>
+
                                             <th class="text-center" style="width: 50px;">Sumatif</th>
+
+                                            <th class="text-center" style="width: 50px;">Formatif</th>
 
                                             <th class="text-center" style="width: 50px;">Sumatif</th>
 
@@ -69,7 +73,15 @@
                                                 <td class="text-center">{{ $no }}</td>
                                                 <td>{{ $pembelajaran->subject->subject_name }}</td>
                                                 <td class="text-center">{{ $pembelajaran->kelas->class_name }}</td>
-                                                <td>{{ $pembelajaran->teacher->full_name }}</td>
+                                                <td>{{ $pembelajaran->teacher->full_name }}
+                                                    {{ $pembelajaran->teacher->title }}
+                                                </td>
+
+                                                @if ($pembelajaran->rencana_nilai_formatif == 0)
+                                                    <td class="text-center bg-danger"><i class="fas fa-times"></i></td>
+                                                @else
+                                                    <td class="text-center bg-success"><i class="fas fa-check"></i></td>
+                                                @endif
 
                                                 @if ($pembelajaran->rencana_nilai_sumatif == 0)
                                                     <td class="text-center bg-danger"><i class="fas fa-times"></i></td>
@@ -78,6 +90,12 @@
                                                 @endif
 
                                                 @if ($pembelajaran->rencana_bobot == 0)
+                                                    <td class="text-center bg-danger"><i class="fas fa-times"></i></td>
+                                                @else
+                                                    <td class="text-center bg-success"><i class="fas fa-check"></i></td>
+                                                @endif
+
+                                                @if ($pembelajaran->nilai_formatif == 0)
                                                     <td class="text-center bg-danger"><i class="fas fa-times"></i></td>
                                                 @else
                                                     <td class="text-center bg-success"><i class="fas fa-check"></i></td>

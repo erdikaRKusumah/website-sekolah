@@ -8,8 +8,14 @@
 
     <link rel="icon" href="/assets/favicon-16x16.png" type="image/x-icon">
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- pace-progress -->
     <link rel="stylesheet" href="/plugins/pace-progress/themes/black/pace-theme-flat-top.css">
     <!-- overlayScrollbars -->
@@ -27,6 +33,13 @@
     <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+    {{-- trix editor --}}
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
 
 </head>
 
@@ -67,11 +80,15 @@
                         {{-- <div class="dropdown-divider"></div>
                         <a href="{{ route('profile') }}" class="dropdown-item">
                             <i class="fas fa-user mr-2"></i> Profile
+                        </a> --}}
+                        <div class="dropdown-divider"></div>
+                        <a href="/" class="dropdown-item">
+                            <i class="fas fa-home mr-2"></i> Beranda
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('gantipassword') }}" class="dropdown-item">
                             <i class="fas fa-key mr-2"></i> Ganti Password
-                        </a> --}}
+                        </a>
                         @if (Auth::user()->role == 2)
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('akses') }}" class="dropdown-item"

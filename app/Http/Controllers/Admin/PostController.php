@@ -24,8 +24,10 @@ class PostController extends Controller
     {
         $title = 'Informasi Sekolah';
         return view('admin.posts.index', compact('title'), [
-            'posts' => Post::where('user_id', auth()->user()->id)->get()
+            'posts' => Post::where('user_id', auth()->user()->id)->get(),
             // 'posts' => Post::all()
+            'categories' => Category::all()
+
         ]);
 
 
@@ -58,6 +60,13 @@ class PostController extends Controller
         $title = "Pengumuman";
         $announcements = DB::table("posts")->select('body', 'excerpt', 'date', 'title', 'created_at')->where('category_id', 5)->get();
         return view('frontend.announcements', compact('title', 'announcements'));
+
+    }
+    public function agendas()
+    {
+        $title = "Agenda";
+        $agendas = DB::table("posts")->select('body', 'excerpt', 'date', 'title', 'created_at')->where('category_id', 4)->get();
+        return view('frontend.agendas', compact('title', 'agendas'));
 
     }
 
@@ -95,7 +104,7 @@ class PostController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
 
 
         Post::create($validatedData);
@@ -189,7 +198,7 @@ class PostController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
 
         $notifSuccess = array
         (

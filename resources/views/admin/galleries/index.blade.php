@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <section>
         <div class="container-fluid">
             <div class="row mb-2">
@@ -51,7 +51,8 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <div style="max-height: 150px; max-width:150px; overflow: hidden;">
-                                                    <img src="{{ asset('storage/' . $gallery->image) }}" class="img-fluid">
+                                                    <img src="{{ asset('storage/' . $gallery->image) }}"
+                                                        class="img-fluid">
                                                 </div>
                                             </td>
                                             <td>
@@ -82,4 +83,6 @@
         </div>
     </section>
     <!-- /.container-fluid -->
-@endsection
+
+</div>
+@include('layouts.main.footer')

@@ -1,91 +1,5 @@
 @extends('layouts.main')
 @section('container')
-    {{-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="/assets/bulding.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h1 style="padding-left: 100px;">First slide label</h1>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="/assets/bulding.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="/assets/bulding.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div> --}}
-
-    <!-- Awal Hero -->
-    {{-- <div class="hero">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/assets/bulding.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/hero.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/hero.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
-    </div> --}}
     {{-- imageSlider --}}
     <section>
         <div class="slider_img layout_two">
@@ -100,7 +14,7 @@
                         <img class="d-block" src="{{ asset('assets') }}/slider1.png" alt="First slide">
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
-                                <h1>Bepikir Kreaftif &amp; Inovatif</h1>
+                                <h1>Bepikir Kreatif &amp; Inovatif</h1>
                                 <h4>Bagi kami kreativitas merupakan gerbang masa depan.<br> kreativitas akan mendorong
                                     inovasi. <br> Itulah yang kami lakukan.</h4>
                                 <div class="slider-btn">
@@ -148,63 +62,12 @@
             </div>
         </div>
     </section>
-    {{-- <div id="slides" class="carousel slide" data-ride="carousel">
-        <ul class="carousel-indicators">
-            <li data-target="#slides" data-slide-to="0" class="active"></li>
-            <li data-target="#slides" data-slide-to="1"></li>
-            <li data-target="#slides" data-slide-to="2"></li>
-        </ul>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/assets/sekolah1.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
-                    <h3 class="display-2">Selamat Datang di Website</h3>
-                    <h1>SMPN 1 CILAMAYA WETAN</h1>
-                    <p class="lead">Tutorial framework website dalam bahasa Indonesia</p>
-                    <button type="button" class="btn btn-outline-light btn-lg">Selengkapnya</button>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/bulding.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
-    </div> --}}
-    {{-- akhir imageSlider --}}
-    {{-- jumbotron --}}
-    {{-- <div class="container-fluid">
-        <div class="row jumbotron">
-            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-                <p class="lead">A web hosting service allows individuals and organization to make their website accessible via the world wide web.</p>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-                <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">Web Hosting</button></a>
-            </div>
 
-        </div>
-    </div> --}}
-    {{-- akhir jumbotron --}}
-    {{-- two column  --}}
-    {{-- <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-lg-4 offset-lg-2 col-md-5 offset-md-1 text-center kepsek">
-                <img src="/assets/kepsek.png" alt="">
-                <p>Ida Rohidayati, S.Pd, M.Pd.</p>
-                <p>Kepala Sekolah</p>
-            </div>
-            <div class="col-lg-4 col-md-5">
-                <h2>Assalamualaikum Wr.Wb</h2>
-                <p>Puji syukur kepada Alloh SWT, Tuhan Yang Maha Esa yang telah memberikan rahmat dan anugerahNya sehingga website SMK Negeri 2 Yogyakarta ini dapat terbit. </p>
-                <p>Salah satu tujuan dari website ini adalah untuk menjawab akan setiap kebutuhan informasi dengan memanfaatkan sarana teknologi informasi yang ada. Kami sadar sepenuhnya dalam rangka memajukan pendidikan di era berkembangnya Teknologi Informasi yang begitu pesat, sangat diperlukan berbagai sarana prasarana yang kondusif, kebutuhan berbagai informasi siswa, guru, orangtua maupun masyarakat, sehingga kami berusaha mewujudkan hal tersebut semaksimal mungkin.</p>
-                <p>Semoga dengan adanya website ini dapat membantu dan bermanfaat, terutama informasi yang berhubungan dengan pendidikan, ilmu pengetahuan dan informasi seputar SMPN 1 Cilamaya Wetan.</p>
-                <a href="#" class="btn btn-primary">Selengkapnya..</a>
-            </div>
-        </div>
-    </div> --}}
     <section class="clearfix about about-style2">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Selamat Datang</h2>
+                    <h2 class="mt-5" style="font-weight: bold;">Selamat Datang</h2>
                 </div>
             </div>
             <div class="row">
@@ -219,25 +82,7 @@
             </div>
         </div>
     </section>
-    {{-- end tc  --}}
-    {{-- welcome section --}}
-    {{-- <div class="container-fluid padding">
-        <div class="row welcome text-center">
-            <div class="col-12">
-                <h1 class="display-4">
-                    Built with ease.
-                </h1>
-            </div>
-            <hr>
-            <div class="col-12">
-                <p class="lead">
-                    Welcome to my Bootstrap 4 website tutorial! Bootstrap is a free and open-source front-end library with HTML and CSS based design.
-                </p>
-            </div>
-        </div>
-    </div> --}}
-    {{-- end ws --}}
-    {{-- three column sectio --}}
+
     <section class="vision">
         <div class="container-md">
             <div class="row text-center padding shadow m-5">
@@ -261,56 +106,73 @@
                     <a href="/visionMision" class="btn btn-default">Selengkapnya..</a>
                     {{-- @endforeach --}}
                 </div>
-                {{-- <div class="col-xs-12 col-md-4">
-                    <i class="fab fa-css3"></i>
-                    <h3>BOOTSTRAP</h3>
-                    <p>Built with the latest version of CSS, CSS 3</p>
-                </div> --}}
             </div>
         </div>
-
     </section>
 
     <section class="history">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h2 class="mt-5">Sejarah Singkat</h2>
-                    <p>SMPN 1 Cilamaya Wetan</p>
-                    <p>{!! $sejarahSingkat->body !!}</p>
-                    <a href="/history" class="btn btn-history mb-5">Selengkapnya..</a>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="kotakk">
-
+            <div class="row mb-5 text-white">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-md-0 mb-4 tm-flex-center">
+                    <div class="tm-about-text tm-flexbox-ie-fix">
+                        <h2 class="tm-orange-text mb-4">Sejarah Singkat</h2>
+                        {!! $sejarahSingkat->body !!}
+                        <a href="/history" class="btn btn-history mb-5">Selengkapnya..</a>
                     </div>
-                    <img src="{{ asset('storage/' . $sejarahSingkat->image) }}" class="img-fluid about-img text-center"
-                        alt="#">
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center pl-md-4 align-self-center"><img
+                        src="{{ asset('storage/' . $sejarahSingkat->image) }}" alt="Image" class="img-fluid"></div>
             </div>
         </div>
     </section>
-
     <section class="galery" id="galery">
         <div class="container">
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2 class="mt-5">Galeri</h2>
+            <div class="cd-hero ">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2 class="mt-5">Galeri</h2>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                @foreach ($galleries as $gallery)
-                    {{-- <div class="galery"> --}}
-                    {{-- <div> --}}
-                    <img src="{{ asset('storage/' . $gallery->image) }}" alt="" class="img-fluid col-lg-4 mb-5">
-                @endforeach
-            </div>
+
+                <ul class="cd-hero-slider">
+
+                    <!-- Page 1 Gallery One -->
+                    <li class="selected">
+                        <div class="cd-full-width">
+                            <div class="container-fluid js-tm-page-content" data-page-no="1" data-page-type="gallery">
+                                <div class="tm-img-gallery-container">
+                                    <div class="tm-img-gallery gallery-one">
+                                        <!-- Gallery One pop up connected with JS code below -->
+                                        @foreach ($galleries as $gallery)
+                                            <div class="grid-item">
+                                                <figure class="effect-bubba">
+                                                    <img src="{{ asset('storage/' . $gallery->image) }}" alt="Image"
+                                                        class="img-fluid tm-img">
+                                                    <figcaption>
+                                                        <p class="tm-figure-description">{{ $gallery->description }}</p>
+                                                        <a href="{{ asset('storage/' . $gallery->image) }}">Lihat</a>
+                                                    </figcaption>
+                                                </figure>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="/galleries" class="btn btn-default mb-5 mt-3">Selengkapnya..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul> <!-- .cd-hero-slider -->
+
+            </div> <!-- .cd-hero -->
+
         </div>
 
     </section>
+
 
     <section class="our_courses" style="background: #f2f2f2;">
         <div class="container">
@@ -326,10 +188,10 @@
                             <div class="course-img-wrap">
                                 @if ($post->image)
                                     <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
-                                        class="img-fluid">
+                                        class="img-fluid" height="300px">
                                 @else
                                     <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}"
-                                        class="card-img-top" alt="{{ $post->category->name }}">
+                                        class="card-img-top" height="300px" alt="{{ $post->category->name }}">
                                 @endif
                             </div>
                             <!-- // end .course-img-wrap -->
@@ -360,7 +222,7 @@
                                         class="img-fluid" alt="event-img">
                                 </div><!-- // end .col-sm-3 -->
                                 <div class="col-sm-9">
-                                    <h3><a href="/announcements">{{ $announcement->title }}</a></h3>
+                                    <h3><a href="/announcements" class="event-a">{{ $announcement->title }}</a></h3>
                                     <span>{{ date('d/m/y', strtotime($announcement->created_at)) }}</span>
                                     <p>{{ $announcement->excerpt }}</p>
 
@@ -380,7 +242,7 @@
                                     </div>
                                 </div>
                                 <div class="date-description">
-                                    <h3><a href="/adgendas">{{ $agenda->title }}</a></h3>
+                                    <h3><a href="/agendas">{{ $agenda->title }}</a></h3>
                                     <p>{{ $agenda->excerpt }}</p>
                                     <hr class="event_line">
                                 </div>

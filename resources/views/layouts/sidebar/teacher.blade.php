@@ -24,8 +24,10 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ Request::is('teacher/rencanaformatif') ? 'active' : '' }}">
+                <li
+                    class="nav-item {{ Request::is('teacher/rencanaformatif', 'teacher/rencanaformatif*', 'teacher/rencanasumatif', 'teacher/rencanasumatif/*', 'teacher/bobotnilai') ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::is('teacher/rencanaformatif', 'teacher/rencanaformatif*', 'teacher/rencanasumatif', 'teacher/rencanasumatif/*', 'teacher/bobotnilai') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list-alt"></i>
                         <p>
                             Rencana Penilaian
@@ -35,27 +37,31 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/teacher/rencanaformatif"
-                                class="nav-link {{ Request::is('teacher/rencanaformatif') ? 'active' : '' }}">
+                                class="nav-link {{ Request::is('teacher/rencanaformatif', 'teacher/rencanaformatif*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Penilaian Formatif</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/teacher/rencanasumatif" class="nav-link @yield('rencanasumatif')">
+                            <a href="/teacher/rencanasumatif"
+                                class="nav-link {{ Request::is('teacher/rencanasumatif', 'teacher/rencanasumatif/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Penilaian Sumatif</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/teacher/bobotnilai" class="nav-link @yield('bobotnilai')">
+                            <a href="/teacher/bobotnilai"
+                                class="nav-link {{ Request::is('teacher/bobotnilai') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Bobot Penilaian</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item @yield('main')">
-                    <a href="#" class="nav-link @yield('berita')">
+                <li
+                    class="nav-item {{ Request::is('teacher/nilaiformatif', 'teacher/nilaiformatif*', 'teacher/nilaisumatif', 'teacher/nilaisumatif/*', 'teacher/nilaisumatifakhir', 'teacher/nilaisumatifakhir/*') ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ Request::is('teacher/nilaiformatif', 'teacher/nilaiformatif*', 'teacher/nilaisumatif', 'teacher/nilaisumatif/*', 'teacher/nilaisumatifakhir', 'teacher/nilaisumatifakhir/*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list-ol"></i>
                         <p>
                             Input Nilai
@@ -64,19 +70,22 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/teacher/nilaiformatif" class="nav-link @yield('nilaiformatif')">
+                            <a href="/teacher/nilaiformatif"
+                                class="nav-link {{ Request::is('teacher/nilaiformatif', 'teacher/nilaiformatif/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Formatif</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/teacher/nilaisumatif" class="nav-link @yield('nilaisumatif')">
+                            <a href="/teacher/nilaisumatif"
+                                class="nav-link {{ Request::is('teacher/nilaisumatif', 'teacher/nilaisumatif/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sumatif</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/teacher/nilaisumatifakhir" class="nav-link @yield('nilaisumatifakhir')">
+                            <a href="/teacher/nilaisumatifakhir"
+                                class="nav-link {{ Request::is('teacher/nilaisumatifakhir', 'teacher/rencanasumatif/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sumatif Akhir</p>
                             </a>
@@ -85,18 +94,10 @@
                 </li>
                 <li class="nav-item">
                     <a href="/teacher/kirimnilaiakhir"
-                        class="nav-link {{ Request::is('teacher/kirimnilaiakhir') ? 'active' : '' }}">
+                        class="nav-link {{ Request::is('teacher/kirimnilaiakhir', 'teacher/kirimnilaiakhir/*') ? 'active' : '' }}">
                         <i class="fas fa-paper-plane nav-icon"></i>
                         <p>
                             Kirim Nilai Akhir
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item bg-danger mt-2">
-                    <a href="/logout" class="nav-link" onclick="return confirm('Apakah anda yakin ingin keluar ?')">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p>
-                            Keluar / Logout
                         </p>
                     </a>
                 </li>

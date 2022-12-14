@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <section>
         <div class="container-fluid">
             <div class="row mb-2">
@@ -24,7 +24,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="/admin/categories" class="mb-5" enctype="multipart/form-data">
+                            <form method="post" action="/admin/categories" class="mb-5"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-6 mb-3">
                                     <label for="name" class="form-label">Nama Kategori</label>
@@ -55,15 +56,17 @@
             </div>
         </div>
     </section>
+</div>
 
-    <script>
-        const name = document.querySelector('#name');
-        const slug = document.querySelector('#slug');
+@include('layouts.main.footer')
 
-        name.addEventListener('change', function() {
-            fetch('/admin/categories/checkSlug?name=' + name.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
-        });
-    </script>
-@endsection
+<script>
+    const name = document.querySelector('#name');
+    const slug = document.querySelector('#slug');
+
+    name.addEventListener('change', function() {
+        fetch('/admin/categories/checkSlug?name=' + name.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug)
+    });
+</script>

@@ -11,6 +11,8 @@ use App\Models\Kelas;
 use App\Models\Pembelajaran;
 use App\Models\ClassGroup;
 use App\Models\NilaiAkhirRapot;
+use App\Models\Extracurricular;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -30,10 +32,14 @@ class DashboardController extends Controller
             $jumlah_guru = Teacher::all()->count();
             $jumlah_siswa = Student::where('status', 1)->count();
             $jumlah_kelas = Kelas::where('tapel_id', $tapel->id)->count();
+            $jumlah_ekstrakulikuler = Extracurricular::all()->count();
+            $announcements = DB::table("posts")->select('body', 'updated_at', 'title', 'created_at')->where('category_id', 5)->get();
 
             return view('dashboard.admin', compact(
                 'title',
                 'tapel',
+                'jumlah_ekstrakulikuler',
+                'announcements',
                 'jumlah_guru',
                 'jumlah_siswa',
                 'jumlah_kelas'
@@ -53,9 +59,12 @@ class DashboardController extends Controller
 
                 $data_capaian_penilaian = Pembelajaran::where('teacher_id', $guru->id)->whereIn('kelas_id', $id_kelas)->where('status', 1)->get();
 
+                $announcements = DB::table("posts")->select('body', 'updated_at', 'title', 'created_at')->where('category_id', 5)->get();
+
                 return view('dashboard.teacher', compact(
                     'title',
                     'tapel',
+                    'announcements',
                     'jumlah_kelas_diampu',
                     'jumlah_mapel_diampu',
                     'jumlah_siswa_diampu',
@@ -69,11 +78,13 @@ class DashboardController extends Controller
                 $id_pembelajaran_kelas = Pembelajaran::whereIn('kelas_id', $id_kelas_diampu)->where('status', 1)->get('id');
                 //Kurikulum Merdeka
                 $jumlah_kirim_nilai = count(NilaiAkhirRapot::whereIn('pembelajaran_id', $id_pembelajaran_kelas)->groupBy('pembelajaran_id')->get());
+                $announcements = DB::table("posts")->select('body', 'updated_at', 'title', 'created_at')->where('category_id', 5)->get();
 
                 // Dashboard Wali Kelas
                 return view('dashboard.walikelas', compact(
                     'title',
                     'tapel',
+                    'announcements',
                     'jumlah_anggota_kelas',
                     'jumlah_kirim_nilai'
                 ));
@@ -91,10 +102,13 @@ class DashboardController extends Controller
                 $jumlah_mapel = Pembelajaran::where('kelas_id', $anggota_kelas->kelas->id)->where('status', 1)->count();
             }
 
+            $announcements = DB::table("posts")->select('body', 'updated_at', 'title', 'created_at')->where('category_id', 5)->get();
+
             return view('dashboard.student', compact(
                 'title',
                 'tapel',
                 'jumlah_mapel',
+                'announcements'
             ));
         }
     }

@@ -29,16 +29,6 @@
                         </p>
                     </a>
                 </li>
-
-                <li class="nav-item bg-danger mt-2">
-                    <a href="{{ route('logout') }}" class="nav-link"
-                        onclick="return confirm('Apakah anda yakin ingin keluar ?')">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p>
-                            Keluar / Logout
-                        </p>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

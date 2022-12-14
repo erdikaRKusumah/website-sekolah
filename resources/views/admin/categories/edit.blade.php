@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <section>
         <div class="container-fluid">
             <div class="row mb-2">
@@ -42,7 +42,8 @@
                                 <div class="col-6 mb-3">
                                     <label for="slug" class="form-label">Slug</label>
                                     <input type="text" class="form-control @error('slug') is-invalid @enderror"
-                                        id="slug" name="slug" required value="{{ old('slug', $category->slug) }}">
+                                        id="slug" name="slug" required
+                                        value="{{ old('slug', $category->slug) }}">
                                     @error('slug')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -58,18 +59,20 @@
         </div>
     </section>
 
-    <script>
-        const name = document.querySelector('#name');
-        const slug = document.querySelector('#slug');
+</div>
+@include('layouts.main.footer')
 
-        name.addEventListener('change', function() {
-            fetch('/admin/categories/checkSlug?name=' + name.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
-        });
+<script>
+    const name = document.querySelector('#name');
+    const slug = document.querySelector('#slug');
 
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault();
-        });
-    </script>
-@endsection
+    name.addEventListener('change', function() {
+        fetch('/admin/categories/checkSlug?name=' + name.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug)
+    });
+
+    document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault();
+    });
+</script>

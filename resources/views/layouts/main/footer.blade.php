@@ -16,6 +16,7 @@
 <script src="/plugins/toastr/toastr.min.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
+{{-- <script src="/js/dashboard.js"></script> --}}
 <script src="/dist/js/demo.js"></script>
 
 <!-- PAGE PLUGINS -->
@@ -40,6 +41,10 @@
 
 <!-- bs-custom-file-input -->
 <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+<!-- trix -->
+<script type="text/javascript" src="/js/trix.js"></script>
+<script src="https://kit.fontawesome.com/03f8eb5262.js" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {

@@ -44,6 +44,30 @@ class KelasController extends Controller
         }
     }
 
+    public function indexKelas()
+    {
+        $title = 'Data Kelas';
+        $tapel = Tapel::all();
+
+        return view('frontend.kesiswaan.classes', compact('title', 'tapel'));
+
+    }
+
+    public function create(Request $request)
+    {
+        $tapel = Tapel::findorfail($request->tapel_id);
+
+        $title = 'Data Kelas';
+        $data_kelas = Kelas::where('tapel_id', $tapel->id)->orderBy('class_level', 'ASC')->get();
+        foreach ($data_kelas as $kelas) {
+            $jumlah_anggota = Student::where('kelas_id', $kelas->id)->count();
+            $kelas->jumlah_anggota = $jumlah_anggota;
+        }
+        $teachers = Teacher::orderBy('full_name', 'ASC')->get();
+        return view('frontend.kesiswaan.create', compact('title', 'data_kelas', 'tapel', 'teachers'));
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *

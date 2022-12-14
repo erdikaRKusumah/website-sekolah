@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\KelasFEController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\GalleryController;
@@ -21,7 +22,9 @@ use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\KkmMapelController;
 use App\Http\Controllers\Admin\PembelajaranController;
 use App\Http\Controllers\Admin\IntervalPredikatController;
+use App\Http\Controllers\Admin\PengelolaanNilaiController;
 use App\Http\Controllers\Admin\KdMapelController;
+use App\Http\Controllers\Admin\StatusPenilaianController;
 use App\Http\Controllers\Teacher\KdMapelGuruController;
 use App\Http\Controllers\Teacher\RencanaPenilaianSumatifController;
 use App\Http\Controllers\Teacher\RencanaPenilaianFormatifController;
@@ -66,6 +69,8 @@ Route::get('/greeting', [ProfileController::class, 'greeting']);
 Route::get('/history', [ProfileController::class, 'history']);
 Route::get('/structure', [ProfileController::class, 'structure']);
 
+Route::get('/galleries', [GalleryController::class, 'indexFE']);
+
 Route::get('/categories', function() {
         return view('categories', [
         'title' => 'Categories',
@@ -74,11 +79,26 @@ Route::get('/categories', function() {
     ]);
 });
 
+Route::get('/test', function(){
+    return view('frontend.test');
+});
+
+
 Route::get('/posts', [PostController::class, 'indexFE']);
 Route::get('/announcements', [PostController::class, 'announcements']);
+Route::get('/agendas', [PostController::class, 'agendas']);
 Route::get('/post/{post:slug}', [PostController::class, 'showFE']);
 
-Route::get('/login', [LoginController::class, 'index']);
+//akademik
+Route::get('/subjects', [SubjectController::class, 'showSubjects']);
+
+//kesiswaan
+Route::resource('/classes', KelasFEController::class, [
+    'uses' => ['index', 'store', 'show']
+]);
+Route::get('/extracurriculars', [ExtracurricularController::class, 'indexFE']);
+
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
 Route::post('/settingtapel', [LoginController::class, 'setting_tapel'])->name('setting.tapel');
 // Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
@@ -86,6 +106,8 @@ Route::post('/settingtapel', [LoginController::class, 'setting_tapel'])->name('s
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/password', [LoginController::class, 'view_ganti_password'])->name('gantipassword');
+    Route::post('/password', [LoginController::class, 'ganti_password'])->name('gantipassword');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::group(['middleware' => 'checkRole:1'], function () {
         Route::group(['prefix' => 'admin'], function () {
@@ -127,6 +149,14 @@ Route::group(['middleware' => ['auth']], function () {
 
             Route::post('pembelajaran/settings', [PembelajaranController::class, 'settings'])->name('pembelajaran.settings');
             Route::resource('pembelajaran', PembelajaranController::class);
+
+            Route::resource('statuspenilaian', StatusPenilaianController::class, [
+                'uses' => ['index', 'store']
+            ]);
+
+            Route::resource('pengelolaannilai', PengelolaanNilaiController::class, [
+                'uses' => ['index', 'store']
+            ]);
 
             Route::get('getKelas/ajax/{id}', [AjaxController::class, 'ajax_kelas']);
 

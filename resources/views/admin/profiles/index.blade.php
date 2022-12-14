@@ -1,6 +1,6 @@
-@extends('admin.layouts.main')
-
-@section('container')
+@include('layouts.main.header')
+@include('layouts.sidebar.admin')
+<div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -53,15 +53,15 @@
                                             <div class="form-group row">
                                                 <label for="title" class="col-sm-3 col-form-label">Profile</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="title" name="title"
-                                                        placeholder="Judul" value="{{ old('title') }}">
+                                                    <input type="text" class="form-control" id="title"
+                                                        name="title" placeholder="Judul" value="{{ old('title') }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="slug" class="col-sm-3 col-form-label">Slug</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="slug" name="slug"
-                                                        placeholder="Slug" value="{{ old('slug') }}">
+                                                    <input type="text" class="form-control" id="slug"
+                                                        name="slug" placeholder="Slug" value="{{ old('slug') }}">
                                                 </div>
                                             </div>
 
@@ -70,7 +70,8 @@
                                                     Image</label>
                                                 <img class="img-preview img-fluid mb-3 col-sm-3">
                                                 <input class="form-control @error('image') is-invalid @enderror"
-                                                    type="file" id="image" name="image" onchange="previewImage()">
+                                                    type="file" id="image" name="image"
+                                                    onchange="previewImage()">
                                                 @error('image')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -84,8 +85,8 @@
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                                 <div class="col-sm-9">
-                                                    <input type="hidden" class="form-control" id="body" name="body"
-                                                        value="{{ old('body') }}">
+                                                    <input type="hidden" class="form-control" id="body"
+                                                        name="body" value="{{ old('body') }}">
                                                 </div>
                                                 <trix-editor input="body"></trix-editor>
                                             </div>
@@ -121,12 +122,13 @@
                                                 <td>{{ $profile->excerpt }}</td>
                                                 <td class="text-center">
                                                     <a href="/admin/profiles/{{ $profile->slug }}"
-                                                        class="btn btn-primary btn-sm"><i class="fas fa-eye fa-fw"></i></a>
+                                                        class="btn btn-primary btn-sm"><i
+                                                            class="fas fa-eye fa-fw"></i></a>
                                                     <a href="/admin/profiles/{{ $profile->slug }}/edit"
                                                         class="btn btn-warning btn-sm"><i
                                                             class="fas fa-edit fa-fw"></i></a>
-                                                    <form action="/admin/profiles/{{ $profile->slug }}" method="post"
-                                                        class="d-inline">
+                                                    <form action="/admin/profiles/{{ $profile->slug }}"
+                                                        method="post" class="d-inline">
                                                         @method('delete')
                                                         @csrf
                                                         <button class="btn btn-danger btn-sm"
@@ -149,7 +151,10 @@
         </div>
         <!--/. container-fluid -->
     </section>
-@endsection
+
+</div>
+@include('layouts.main.footer')
+
 
 <script>
     const title = document.querySelector('#title');

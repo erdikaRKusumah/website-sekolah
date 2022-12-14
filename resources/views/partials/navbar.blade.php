@@ -105,8 +105,52 @@
                     </li>
                     <li class="nav-item"><a href="/posts" class="nav-link">Informasi</a></li>
                 </ul>
+                @auth
+                    <ul class="navbar-nav ml-5 ms-auto">
+                        <!-- Notifications Dropdown Menu -->
+                        <li class="nav-item dropdown pr-2">
+                            <!-- User Block  -->
+                            <a class="user-block" data-toggle="dropdown04" href="#">
+                                @if (Auth::user()->role == 1)
+                                    <img class="img-circle" src="/dist/img/{{ Auth::user()->admin->image }}"
+                                        alt="User Image">
+                                    <span class="username text-black">{{ Auth::user()->admin->full_name }}</span>
+                                    <span class="description">Administrator</span>
+                                @elseif(Auth::user()->role == 2)
+                                    <img class="img-circle" src="/dist/img/{{ Auth::user()->teacher->image }}"
+                                        alt="User Image">
+                                    <span class="username text-black">{{ Auth::user()->teacher->full_name }}</span>
+                                    <span class="description">{{ session()->get('akses_sebagai') }}</span>
+                                @else
+                                    <img class="img-circle" src="/dist/img/{{ Auth::user()->student->image }}"
+                                        alt="User Image">
+                                    <span class="username text-black">{{ Auth::user()->student->full_name }}</span>
+                                    <span class="description">Siswa</span>
+                                @endif
+                            </a>
+                            <!-- End User Block  -->
+
+                            <!-- User Dropdown  -->
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <span class="dropdown-item dropdown-header">Akun Saya</span>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('dashboard') }}" class="dropdown-item">
+                                    <i class="fas fa-home mr-2"></i> Dashboard
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer bg-danger"
+                                    onclick="return confirm('Apakah anda yakin ingin keluar ?')"><i
+                                        class="fas fa-sign-out-alt mr-1"></i> Keluar / Logout</a>
+                            </div>
+                            <!-- End User Dropdown  -->
+                        </li>
+                    </ul>
+
+                @endauth
             </div>
         </div>
+
     </nav>
 
 </div>

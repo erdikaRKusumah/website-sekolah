@@ -35,8 +35,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @yield('main')">
-                    <a href="#" class="nav-link @yield('berita')">
+                <li class="nav-item {{ Request::is('admin/posts') ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('admin/posts') ? 'active' : '' }}">
                         <i class="nav-icon bx bxs-news"></i>
                         <p>
                             Informasi
