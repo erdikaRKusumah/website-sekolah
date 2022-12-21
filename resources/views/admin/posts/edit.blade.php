@@ -56,8 +56,9 @@
                                     @enderror
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="category" class="form-label">Category</label>
-                                    <select class="form-select" name="category_id">
+                                    <label for="category" class="form-label">Kategori</label>
+                                    <select class="form-select" name="category_id" id="category_id"
+                                        onchange="changeStatus()">
                                         @foreach ($categories as $category)
                                             {{-- <option value="{{ $category->id }}"  {{ old('category_id') == $category->id ? ' selected' : '' }}>{{ $category->name }}</option> --}}
                                             @if (old('category_id', $post->category_id) == $category->id)
@@ -69,9 +70,14 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-6 mb-3" id="date">
+                                    <label for="date" class="form-label">Tanggal Kegiatan</label>
+                                    <input type="date" class="form-control" id="date" name="date"
+                                        value="{{ old('date', $post->date) }}">
+                                </div>
 
                                 <div class="col-6 mb-3">
-                                    <label for="image" class="form-label">Post Image</label>
+                                    <label for="image" class="form-label">Gambar Informasi</label>
                                     <input type="hidden" name="oldImage" value="{{ $post->image }}">
                                     @if ($post->image)
                                         <img src="{{ asset('storage/' . $post->image) }}"
@@ -89,7 +95,7 @@
                                 </div>
 
                                 <div class="col-6 mb-3">
-                                    <label for="body" class="form-label">Body</label>
+                                    <label for="body" class="form-label">Isi</label>
                                     @error('body')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -134,6 +140,17 @@
 
         oFReader.onload = function(oFREvent) {
             imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
+<script>
+    function changeStatus() {
+        var status = document.getElementById("category_id");
+
+        if (status.value == 4) {
+            document.getElementById("date").style.visibility = "visible";
+        } else {
+            document.getElementById("date").style.visibility = "hidden";
         }
     }
 </script>

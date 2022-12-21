@@ -77,6 +77,7 @@ class TeacherController extends Controller
             'birth_place' => $request->birth_place,
             'birth_date' => $request->birth_date,
             'phone_number' => $request->phone_number,
+            'image' => 'default.png',
             'address' => $request->address
         ]);
             $teacher->save();

@@ -32,11 +32,12 @@ use App\Http\Controllers\Teacher\RencanaBobotPenilaianController;
 use App\Http\Controllers\Teacher\NilaiFormatifController;
 use App\Http\Controllers\Teacher\NilaiSumatifController;
 use App\Http\Controllers\Teacher\NilaiSumatifAkhirController;
-use App\Http\Controllers\Teacher\KirimNilaiAkhirRapotController;
 use App\Http\Controllers\Teacher\KirimNilaiFormatifController;
+use App\Http\Controllers\Teacher\KirimNilaiAkhirRapotController;
 use App\Http\Controllers\Walikelas\PesertaDidikController;
 use App\Http\Controllers\Walikelas\StatusPenilaianGuruController;
 use App\Http\Controllers\Walikelas\HasilPengelolaanNilaiController;
+use App\Http\Controllers\Walikelas\HasilNilaiFormatifController;
 use App\Http\Controllers\Student\NilaiAkhirSemesterController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\DashboardController;
@@ -196,6 +197,8 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('statusnilaiguru', [StatusPenilaianGuruController::class, 'index'])->name('statusnilaiguru');
 
                 Route::get('hasilnilai', [HasilPengelolaanNilaiController::class, 'index'])->name('hasilnilai');
+
+                Route::get('hasilnilaiformatif', [HasilNilaiFormatifController::class, 'index'])->name('hasilnilaiformatif');
             });
         });
 

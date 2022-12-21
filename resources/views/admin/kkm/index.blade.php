@@ -215,7 +215,7 @@
 </div>
 @include('layouts.main.footer')
 
-<script src="/plugins/jquery/jquery.min.js"></script>
+{{-- <script src="/plugins/jquery/jquery.min.js"></script> --}}
 <script type="text/javascript">
     $(document).ready(function() {
         $('select[name="subject_id"]').on('change', function() {

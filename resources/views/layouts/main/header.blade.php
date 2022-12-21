@@ -39,6 +39,10 @@
         trix-toolbar [data-trix-button-group="file-tools"] {
             display: none;
         }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 
 </head>

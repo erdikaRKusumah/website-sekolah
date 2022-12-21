@@ -13,7 +13,7 @@ class NilaiFormatif extends Model
 
     public function rencana_penilaian_formatif()
     {
-        return $this->belongsTo(RencanaPenilaianSumatif::class);
+        return $this->belongsTo(RencanaPenilaianFormatif::class);
     }
 
     public function class_group()

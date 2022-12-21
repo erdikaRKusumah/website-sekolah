@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-md-8">
                     <h2>SAMBUTAN SINGKAT</h2>
-                    <p>{!! $sambutan->body !!}</p>
+                    <p>{!! $sambutan->excerpt !!}</p>
                     <a href="/greeting" class="btn btn-default">Selengkapnya..</a>
                 </div>
             </div>
@@ -112,15 +112,16 @@
 
     <section class="history">
         <div class="container">
-            <div class="row mb-5 text-white">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-md-0 mb-4 tm-flex-center">
-                    <div class="tm-about-text tm-flexbox-ie-fix">
-                        <h2 class="tm-orange-text mb-4">Sejarah Singkat</h2>
-                        {!! $sejarahSingkat->body !!}
-                        <a href="/history" class="btn btn-history mb-5">Selengkapnya..</a>
+            <div class="row prow text-white" style="font-size: 17px;">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 content">
+                    <div class="flexbox-item">
+                        <h2>Sejarah Singkat</h2>
+                        <p>SMPN 1 Cilamaya Wetan</p>
+                        {!! $sejarahSingkat->excerpt !!}
+                        <a href="/history" class="btn btn-history mt-4">Selengkapnya..</a>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center pl-md-4 align-self-center"><img
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 gambar"><img
                         src="{{ asset('storage/' . $sejarahSingkat->image) }}" alt="Image" class="img-fluid"></div>
             </div>
         </div>
@@ -186,25 +187,20 @@
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                         <div class="courses_box mb-4">
                             <div class="course-img-wrap">
-                                @if ($post->image)
-                                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
-                                        class="img-fluid" height="300px">
-                                @else
-                                    <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}"
-                                        class="card-img-top" height="300px" alt="{{ $post->category->name }}">
-                                @endif
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                                    class="img-fluid">
                             </div>
                             <!-- // end .course-img-wrap -->
                             <a href="/post/{{ $post->slug }}" class="course-box-content">
-                                <h3 style="text-align:center;">{{ $post->title }}</h3>
+                                <h4 style="text-align:center;">{{ $post->title }}</h4>
                             </a>
                         </div>
                     </div>
                 @endforeach
             </div> <br>
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <a href="/posts" class="btn btn-default btn-courses">View More</a>
+                <div class="col-md-12 text-center mb-4">
+                    <a href="/posts" class="btn btn-default btn-courses">Selengkapnya...</a>
                 </div>
             </div>
         </div>
@@ -222,7 +218,7 @@
                                         class="img-fluid" alt="event-img">
                                 </div><!-- // end .col-sm-3 -->
                                 <div class="col-sm-9">
-                                    <h3><a href="/announcements" class="event-a">{{ $announcement->title }}</a></h3>
+                                    <h4><a href="/announcements" class="event-a">{{ $announcement->title }}</a></h4>
                                     <span>{{ date('d/m/y', strtotime($announcement->created_at)) }}</span>
                                     <p>{{ $announcement->excerpt }}</p>
 
@@ -242,7 +238,7 @@
                                     </div>
                                 </div>
                                 <div class="date-description">
-                                    <h3><a href="/agendas">{{ $agenda->title }}</a></h3>
+                                    <h4><a href="/agendas">{{ $agenda->title }}</a></h4>
                                     <p>{{ $agenda->excerpt }}</p>
                                     <hr class="event_line">
                                 </div>

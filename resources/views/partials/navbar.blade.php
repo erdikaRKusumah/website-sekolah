@@ -100,7 +100,6 @@
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             <a class="dropdown-item" href="/classes">Kelas</a>
                             <a class="dropdown-item" href="/extracurriculars">Ekstrakulikuler</a>
-                            <a class="dropdown-item" href="/achievements">Prestasi Siswa</a>
                         </div>
                     </li>
                     <li class="nav-item"><a href="/posts" class="nav-link">Informasi</a></li>

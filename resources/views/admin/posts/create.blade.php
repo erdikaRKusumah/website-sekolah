@@ -55,10 +55,10 @@
                                 </div>
 
                                 <div class="col-2 mb-3">
-                                    <label for="category" class="form-label">Category</label>
+                                    <label for="category" class="form-label">Kategori</label>
                                     <select class="form-select" name="category_id" id="category_id"
                                         onchange="changeStatus()">
-                                        <option selected>Choose...</option>
+                                        <option selected>Pilih Kategori...</option>
                                         @foreach ($categories as $category)
                                             {{-- <option value="{{ $category->id }}"  {{ old('category_id') == $category->id ? ' selected' : '' }}>{{ $category->name }}</option> --}}
                                             @if (old('category_id') == $category->id)
@@ -72,7 +72,7 @@
                                 </div>
 
                                 <div class="col-6 mb-3" id="date">
-                                    <label for="date" class="form-label">Tanggal</label>
+                                    <label for="date" class="form-label">Tanggal Kegiatan</label>
                                     <input type="date" class="form-control" id="date" name="date"
                                         value="{{ old('date') }}">
                                 </div>
@@ -81,7 +81,7 @@
 
 
                                 <div class="col-6 mb-3">
-                                    <label for="image" class="form-label">Post Image</label>
+                                    <label for="image" class="form-label">Gambar Informasi</label>
                                     <img class="img-preview img-fluid mb-3 col-sm-5">
                                     <input class="form-control @error('image') is-invalid @enderror" type="file"
                                         id="image" name="image" onchange="previewImage()">
@@ -93,7 +93,7 @@
                                 </div>
 
                                 <div class="col-6 mb-3">
-                                    <label for="body" class="form-label">Body</label>
+                                    <label for="body" class="form-label">Isi</label>
                                     @error('body')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror

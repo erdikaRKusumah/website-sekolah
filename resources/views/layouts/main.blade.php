@@ -72,7 +72,8 @@
     <script src="/assets/theme/js/jquery-1.11.3.min.js"></script>
     <script src="/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="/assets/theme/js/jquery.magnific-popup.js"></script>
-    <script src="/assets/theme/js/bootstrap.min.js"></script> <!-- Plugins -->
+    <script src="/assets/theme/js/bootstrap.min.js"></script>
+    <!-- Plugins -->
     <script src="/assets/theme/js/slick.min.js"></script>
     <script src="/plugins/custom/main.js"></script>
     <script>

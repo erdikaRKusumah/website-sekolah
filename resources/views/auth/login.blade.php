@@ -56,6 +56,9 @@
                         </div>
                     </div>
                 </form>
+                <p class="mb-1">
+                    <a href="/">Kembali ke Home</a>
+                </p>
 
             </div>
             <!-- /.login-card-body -->

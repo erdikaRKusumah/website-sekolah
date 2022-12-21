@@ -107,64 +107,96 @@
 @endsection --}}
 
     <section class="blog-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    @foreach ($posts as $post)
-                        <div class="blog-single-item">
-                            <div class="blog-img_block">
-                                <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid"
-                                    alt="{{ $post->category->name }}">
-                                <div class="blog-date">
-                                    <span>{{ $post->created_at->toDateString() }}</span>
+        @if ($posts->count())
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        @foreach ($posts as $post)
+                            <div class="blog-single-item">
+                                <div class="blog-img_block">
+                                    <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid"
+                                        alt="{{ $post->category->name }}">
+                                    <div class="blog-date">
+                                        <span>{{ $post->created_at->toDateString() }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="blog-tiltle_block">
-                                <h4><a href="/post/{{ $post->slug }}">{{ $post->title }}</a></h4>
-                                <h6> <a href="#"><i class="fa fa-user"
-                                            aria-hidden="true"></i><span>{{ $post->user->admin->full_name }}</span> </a> |
-                                    <a href="/posts?category={{ $post->category->slug }}"><i class="fa fa-tags"
-                                            aria-hidden="true"></i><span>{{ $post->category->name }}</span></a></h6>
-                                {{ $post->excerpt }}
-                                <div class="blog-icons">
-                                    <div class="blog-share_block">
-                                        <a href="/post/{{ $post->slug }}">Read More</a>
+                                <div class="blog-tiltle_block">
+                                    <h4><a href="/post/{{ $post->slug }}">{{ $post->title }}</a></h4>
+                                    <h6> <a href="#"><i class="fa fa-user"
+                                                aria-hidden="true"></i><span>{{ $post->user->admin->full_name }}</span> </a>
+                                        |
+                                        <a href="/posts?category={{ $post->category->slug }}"><i class="fa fa-tags"
+                                                aria-hidden="true"></i><span>{{ $post->category->name }}</span></a>
+                                    </h6>
+                                    {{ $post->excerpt }}
+                                    <div class="blog-icons">
+                                        <div class="blog-share_block">
+                                            <a href="/post/{{ $post->slug }}">Read More</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="col-md-4">
-                    <form action="/posts" method="get">
-                        @if (request('category'))
-                            <input type="hidden" name="category" value="{{ request('category') }}">
-                        @endif
+                        @endforeach
+                    </div>
+                    <div class="col-md-4">
+                        <form action="/posts" method="get">
+                            @if (request('category'))
+                                <input type="hidden" name="category" value="{{ request('category') }}">
+                            @endif
 
-                        @if (request('user'))
-                            <input type="hidden" name="user" value="{{ request('user') }}">
-                        @endif
-                        <input type="text" name="search" placeholder="Search" class="blog-search"
-                            value="{{ request('search') }}">
-                        {{-- <input type="text" name="keyword" placeholder="Search" class="blog-search" required>
-                        <button type="submit" class="btn btn-warning btn-blogsearch">SEARCH</button> --}}
-                        <button type="submit" class="btn btn-warning btn-blogsearch">SEARCH</button>
-                    </form>
-                    <div class="blog-category_block">
-                        <h3>Kategori</h3>
-                        <ul>
-                            @foreach ($categories as $category)
-                                <li><a href="/posts?category={{ $category->slug }}">{{ $category->name }}<i
-                                            class="fa fa-caret-right" aria-hidden="true"></i></a></li>
-                            @endforeach
-                        </ul>
+                            @if (request('user'))
+                                <input type="hidden" name="user" value="{{ request('user') }}">
+                            @endif
+                            <input type="text" name="search" placeholder="Search" class="blog-search"
+                                value="{{ request('search') }}">
+                            <button type="submit" class="btn btn-warning btn-blogsearch">SEARCH</button>
+                        </form>
+                        <div class="blog-category_block">
+                            <h3>Kategori</h3>
+                            <ul>
+                                @foreach ($categories as $category)
+                                    <li><a href="/posts?category={{ $category->slug }}">{{ $category->name }}<i
+                                                class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex col-md-8 justify-content-center">
+                        {{ $posts->links() }}
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mb-3">
-                {{ $posts->links() }}
-            </div>
-        </div>
+        @else
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p class="text-center fs-4">No Informations found.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <form action="/posts" method="get">
+                            @if (request('category'))
+                                <input type="hidden" name="category" value="{{ request('category') }}">
+                            @endif
 
+                            @if (request('user'))
+                                <input type="hidden" name="user" value="{{ request('user') }}">
+                            @endif
+                            <input type="text" name="search" placeholder="Search" class="blog-search"
+                                value="{{ request('search') }}">
+                            <button type="submit" class="btn btn-warning btn-blogsearch">SEARCH</button>
+                        </form>
+                        <div class="blog-category_block">
+                            <h3>Kategori</h3>
+                            <ul>
+                                @foreach ($categories as $category)
+                                    <li><a href="/posts?category={{ $category->slug }}">{{ $category->name }}<i
+                                                class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </section>
 @endsection

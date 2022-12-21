@@ -85,13 +85,22 @@
                         </li>
                         <li class="nav-item">
                             <a href="/teacher/nilaisumatifakhir"
-                                class="nav-link {{ Request::is('teacher/nilaisumatifakhir', 'teacher/rencanasumatif/*') ? 'active' : '' }}">
+                                class="nav-link {{ Request::is('teacher/nilaisumatifakhir', 'teacher/nilaisumatifakhir/*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sumatif Akhir</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                {{-- <li class="nav-item">
+                    <a href="/teacher/kirimnilaiformatif"
+                        class="nav-link {{ Request::is('teacher/kirimnilaiformatif', 'teacher/kirimnilaiformatif/*') ? 'active' : '' }}">
+                        <i class="fas fa-paper-plane nav-icon"></i>
+                        <p>
+                            Kirim Nilai Formatif
+                        </p>
+                    </a>
+                </li> --}}
                 <li class="nav-item">
                     <a href="/teacher/kirimnilaiakhir"
                         class="nav-link {{ Request::is('teacher/kirimnilaiakhir', 'teacher/kirimnilaiakhir/*') ? 'active' : '' }}">

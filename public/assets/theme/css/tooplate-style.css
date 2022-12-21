@@ -141,10 +141,6 @@ button:focus {
     padding: 0 11px 12px;
 }
 
-.tm-social-icons-container {
-    margin-bottom: 30px;
-}
-
 .cd-full-width {
     display: -ms-flexbox;
     display: flex;

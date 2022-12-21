@@ -27,9 +27,19 @@ class PembelajaranController extends Controller
         $data_kelas = Kelas::where('tapel_id', $tapel->id)->orderBy('class_level', 'ASC')->get();
 
         if (count($data_mapel) == 0) {
-            return redirect('admin/subjects')->with('warning', 'Mohon isikan data mata pelajaran');
+            $notifWarning = array
+            (
+                'message' => 'Mohon isikan data mata pelajaran',
+                'alert-type' => 'warning'
+            );
+            return redirect('admin/subjects')->with($notifWarning);
         } elseif (count($data_kelas) == 0) {
-            return redirect('admin/kelas')->with('warning', 'Mohon isikan data kelas');
+            $notifWarning = array
+            (
+                'message' => 'Mohon isikan data kelas',
+                'alert-type' => 'warning'
+            );
+            return redirect('admin/kelas')->with($notifWarning);
         } else {
             $title = 'Data Pembelajaran';
             $id_kelas = Kelas::where('tapel_id', $tapel->id)->orderBy('class_level', 'ASC')->get('id');
@@ -99,10 +109,10 @@ class PembelajaranController extends Controller
             Pembelajaran::insert($store_data_baru);
         }
         $notifSuccess = array
-            (
-                'message' => 'Setting Pembelajaran Berhasil',
-                'alert-type' => 'success'
-            );
+        (
+            'message' => 'Setting Pembelajaran Berhasil',
+            'alert-type' => 'success'
+        );
         return redirect('admin/pembelajaran')->with($notifSuccess);
     }
 }

@@ -43,6 +43,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('hasilnilaiformatif') }}"
+                        class="nav-link {{ Request::is('teacher/hasilnilaiformatif') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-check-square"></i>
+                        <p>
+                            Hasil Nilai Formatif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('hasilnilai') }}"
                         class="nav-link {{ Request::is('teacher/hasilnilai') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-check-square"></i>

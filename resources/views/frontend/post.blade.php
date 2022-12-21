@@ -43,7 +43,7 @@
                         <div class="blog-tiltle_block">
                             <h4><a href="{{ $post->slug }}">{{ $post->title }}</a></h4>
                             <h6> <a href="#"><i class="fa fa-user"
-                                        aria-hidden="true"></i><span>{{ $post->user->username }}</span> </a> | <a
+                                        aria-hidden="true"></i><span>{{ $post->user->admin->full_name }}</span> </a> | <a
                                     href="#"><i class="fa fa-tags"
                                         aria-hidden="true"></i><span>{{ $post->category->name }}</span></a></h6>
                             {!! $post->body !!}
@@ -56,10 +56,10 @@
                             <input type="hidden" name="category" value="{{ request('category') }}">
                         @endif
 
-                        @if (request('author'))
-                            <input type="hidden" name="author" value="{{ request('author') }}">
+                        @if (request('user'))
+                            <input type="hidden" name="user" value="{{ request('user') }}">
                         @endif
-                        <input type="text" name="keyword" placeholder="Search" class="blog-search"
+                        <input type="text" name="search" placeholder="Search" class="blog-search"
                             value="{{ request('search') }}">
 
                         <button type="submit" class="btn btn-warning btn-blogsearch">SEARCH</button>
@@ -68,7 +68,7 @@
                         <h3>Kategori</h3>
                         <ul>
                             @foreach ($categories as $category)
-                                <li><a href="/categories/{{ $category->slug }}">{{ $category->name }}<i
+                                <li><a href="/posts?category={{ $category->slug }}">{{ $category->name }}<i
                                             class="fa fa-caret-right" aria-hidden="true"></i></a></li>
                             @endforeach
                         </ul>

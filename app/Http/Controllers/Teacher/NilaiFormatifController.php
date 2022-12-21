@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class NilaiFormatifController extends Controller
+class nilaiformatifController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class NilaiFormatifController extends Controller
         foreach ($data_penilaian as $penilaian) {
             $data_rencana_nilai = RencanaPenilaianFormatif::where('pembelajaran_id', $penilaian->id)->groupBy('kode_penilaian')->get();
             $id_rencana_nilai = RencanaPenilaianFormatif::where('pembelajaran_id', $penilaian->id)->groupBy('kode_penilaian')->get('id');
-            $telah_dinilai = nilaiFormatif::whereIn('rencana_penilaian_formatif_id', $id_rencana_nilai)->groupBy('rencana_penilaian_formatif_id')->get();
+            $telah_dinilai = NilaiFormatif::whereIn('rencana_penilaian_formatif_id', $id_rencana_nilai)->groupBy('rencana_penilaian_formatif_id')->get();
 
             $penilaian->jumlah_rencana_penilaian = count($data_rencana_nilai);
             $penilaian->jumlah_telah_dinilai = count($telah_dinilai);
@@ -77,14 +77,14 @@ class NilaiFormatifController extends Controller
             if ($count_kd_nilai == 0) {
                 $data_rencana_penilaian = RencanaPenilaianFormatif::where('pembelajaran_id', $request->pembelajaran_id)->where('kode_penilaian', $kode_penilaian)->get();
                 $count_kd = count($data_rencana_penilaian);
-                $title = 'Input Nilai formatif';
+                $title = 'Input Nilai Formatif';
                 return view('teacher.nilaiformatif.create', compact('title', 'kode_penilaian', 'pembelajaran', 'data_anggota_kelas', 'data_rencana_penilaian', 'data_kode_penilaian', 'count_kd'));
             } else {
                 foreach ($data_anggota_kelas as $anggota_kelas) {
                     $data_nilai = NilaiFormatif::where('class_group_id', $anggota_kelas->id)->whereIn('rencana_penilaian_formatif_id', $id_data_rencana_penilaian)->get();
                     $anggota_kelas->data_nilai = $data_nilai;
                 }
-                $title = 'Edit Nilai formatif';
+                $title = 'Edit Nilai Formatif';
                 return view('teacher.nilaiformatif.edit', compact('title', 'kode_penilaian', 'pembelajaran', 'data_anggota_kelas', 'data_kode_penilaian', 'count_kd_nilai', 'data_kd_nilai'));
             }
         }

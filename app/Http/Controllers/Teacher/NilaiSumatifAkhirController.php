@@ -145,6 +145,6 @@ class NilaiSumatifAkhirController extends Controller
             'message' => 'Data nilai berhasil diubah',
             'alert-type' => 'success'
         );
-        return redirect('guru/nilaiptspas')->with($notifSuccess);
+        return redirect('teacher/nilaisumatifakhir')->with($notifSuccess);
     }
 }

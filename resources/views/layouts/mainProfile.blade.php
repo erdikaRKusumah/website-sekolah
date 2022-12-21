@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
     <link rel="stylesheet" href="{{ asset('css') }}/navbar.css">
     <link rel="stylesheet" href="{{ asset('css') }}/style.css">
@@ -90,11 +94,73 @@
             <script src="/plugins/jquery/jquery.min.js"></script>
             <script src="/plugins/popper/popper.js"></script>
             <script src="/plugins/bootstrap/bootstrap.min.js"></script>
+            <script src="/assets/theme/js/bootstrap.min.js"></script>
             <script src="/plugins/custom/main.js"></script>
+
+            <!-- DataTables -->
+            <script src="/plugins/datatables/jquery.dataTables.js"></script>
+            <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 
             {{-- <script src="/js/app.js"></script> --}}
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+            </script>
+
+            <script>
+                $(function() {
+                    //Initialize Select2 Elements
+                    $('.select2').select2()
+
+                    // $("#example1").DataTable();
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                    });
+                    $('#example3').DataTable({
+                        "paging": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                    });
+
+                    $('#example4').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": false,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                    });
+
+                    //Bootstrap Duallistbox
+                    $('.duallistbox').bootstrapDualListbox()
+                });
+            </script>
+            <!-- Page specific script -->
+            <script>
+                $(function() {
+                    $("#example1").DataTable({
+                        "responsive": true,
+                        "lengthChange": true,
+                        "autoWidth": false,
+                        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": false,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
+                    });
+                });
             </script>
 </body>
 

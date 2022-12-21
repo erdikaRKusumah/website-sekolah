@@ -18,8 +18,8 @@ class HomeController extends Controller
     {
         $visi = DB::table("profiles")->select('body')->where('title', 'Visi')->first();
         $misi = DB::table("profiles")->select('excerpt')->where('title', 'Misi')->first();
-        $sambutan = DB::table("profiles")->select('body', 'image')->where('title', 'Sambutan Singkat')->first();
-        $sejarahSingkat = DB::table("profiles")->select('body', 'image')->where('title', 'Sejarah Singkat')->first();
+        $sambutan = DB::table("profiles")->select('body', 'excerpt', 'image')->where('title', 'Sambutan Singkat')->first();
+        $sejarahSingkat = DB::table("profiles")->select('body', 'excerpt', 'image')->where('title', 'Sejarah Singkat')->first();
         $title = '';
         $announcements = DB::table("posts")->select('slug', 'body', 'excerpt', 'created_at', 'title')->where('category_id', 5)->get();
         $agendas = DB::table("posts")->select('slug', 'body', 'excerpt', 'date', 'title')->where('category_id', 4)->get();
